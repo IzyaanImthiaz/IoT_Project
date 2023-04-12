@@ -267,30 +267,5 @@
         "x": 400,
         "y": 220,
         "wires": []
-    },
-    {
-        "id": "ae40ff7325476b90",
-        "type": "complete",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "scope": [],
-        "uncaught": false,
-        "x": 590,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e4650e3f429cdc00",
-        "type": "link in",
-        "z": "adf2d2d757d07856",
-        "name": "link in 1",
-        "links": [],
-        "x": 735,
-        "y": 120,
-        "wires": [
-            []
-        ]
     }
 ]
