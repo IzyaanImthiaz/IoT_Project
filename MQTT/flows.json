@@ -16,6 +16,14 @@
         "env": []
     },
     {
+        "id": "e80c4ca6875b7f28",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "91527c21ef358a1f",
         "type": "mqtt-broker",
         "name": "IOT",
@@ -256,7 +264,7 @@
         "type": "debug",
         "z": "adf2d2d757d07856",
         "name": "Output MQTT",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -269,9 +277,36 @@
         "wires": []
     },
     {
-        "id": "3c0697718d3f20b6",
+        "id": "d971d860e1649c5d",
+        "type": "inject",
+        "z": "e80c4ca6875b7f28",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 320,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4567f27b3f4a3e71",
         "type": "debug",
-        "z": "adf2d2d757d07856",
+        "z": "e80c4ca6875b7f28",
         "name": "debug 1",
         "active": true,
         "tosidebar": true,
@@ -280,8 +315,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 300,
+        "x": 680,
+        "y": 120,
         "wires": []
     }
 ]
