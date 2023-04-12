@@ -256,7 +256,7 @@
         "type": "debug",
         "z": "adf2d2d757d07856",
         "name": "Output MQTT",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -277,6 +277,18 @@
         "uncaught": false,
         "x": 590,
         "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e4650e3f429cdc00",
+        "type": "link in",
+        "z": "adf2d2d757d07856",
+        "name": "link in 1",
+        "links": [],
+        "x": 735,
+        "y": 120,
         "wires": [
             []
         ]
