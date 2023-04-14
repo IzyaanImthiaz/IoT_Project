@@ -51,6 +51,16 @@
         "sessionExpiry": ""
     },
     {
+        "id": "0c3ed7beda01e705",
+        "type": "mongodb",
+        "hostname": "cluster0.srotqsm.mongodb.net",
+        "topology": "dnscluster",
+        "connectOptions": "",
+        "port": "27017",
+        "db": "IOT_Database",
+        "name": "MongoDB_Input"
+    },
+    {
         "id": "f0e2385baadcf895",
         "type": "http in",
         "z": "2e4e910c9b8b965f",
@@ -242,8 +252,8 @@
         "id": "5e0ed7c79851fcfe",
         "type": "mqtt in",
         "z": "adf2d2d757d07856",
-        "name": "MQTT Subscribe",
-        "topic": "temperature_iot_sliit",
+        "name": "MQTT_Temperature",
+        "topic": "sensedata/t",
         "qos": "0",
         "datatype": "utf8",
         "broker": "91527c21ef358a1f",
@@ -251,19 +261,64 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 160,
-        "y": 220,
+        "x": 170,
+        "y": 280,
         "wires": [
             [
-                "837a07e01ea306ba"
+                "64df18a8a1d909ca",
+                "92eae0a8963907e9"
             ]
         ]
     },
     {
-        "id": "837a07e01ea306ba",
+        "id": "7611354ed8017563",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Relative Humidity",
+        "topic": "sensedata/rh",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "64df18a8a1d909ca",
+                "b92cfe7f08f371a6"
+            ]
+        ]
+    },
+    {
+        "id": "c5a8ddad1eb3bc20",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Heat index",
+        "topic": "sensedata/hi",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 560,
+        "wires": [
+            [
+                "64df18a8a1d909ca",
+                "0d06ea34c5ed189b"
+            ]
+        ]
+    },
+    {
+        "id": "64df18a8a1d909ca",
         "type": "debug",
         "z": "adf2d2d757d07856",
-        "name": "Output MQTT",
+        "name": "debug_HI",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -272,9 +327,137 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 400,
-        "y": 220,
+        "x": 420,
+        "y": 180,
         "wires": []
+    },
+    {
+        "id": "20d9b4c07a596a07",
+        "type": "http in",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "url": "/routes",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "48a3d3a7cfab391a",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "cb64b66e367868f5",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "temperature",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 840,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9317ee874f8a40d8",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "MongoDB_Input Relative Humidity",
+        "collection": "Relative_Humidity",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 860,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "0b683324c5480f4e",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "MongoDB_Input Heat Index",
+        "collection": "Heat_Index",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 840,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "92eae0a8963907e9",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 2",
+        "func": "var D = new Date();\n\nmsg.payload = Number(msg.payload)\nmsg.year = D.getFullYear()\nmsg.month = D.getMonth()+1\nmsg.day = D.getDay()\nmsg.time = D.getHours() + ':' + D.getMinutes();\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 280,
+        "wires": [
+            [
+                "cb64b66e367868f5"
+            ]
+        ]
+    },
+    {
+        "id": "b92cfe7f08f371a6",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 3",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 420,
+        "wires": [
+            [
+                "9317ee874f8a40d8"
+            ]
+        ]
+    },
+    {
+        "id": "0d06ea34c5ed189b",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 4",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 560,
+        "wires": [
+            [
+                "0b683324c5480f4e"
+            ]
+        ]
     },
     {
         "id": "d971d860e1649c5d",
