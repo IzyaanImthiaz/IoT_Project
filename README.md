@@ -6,7 +6,7 @@ Please go under edit and edit this file as needed for your project
 # Team Name - 
 # Project Group - 030
 ### Group Leader - IT20008550 - Wijayarathna P.P (Puranjanaaa)
-### Member 2 - 
+### Member 2 -  IT20350246 - Imthiaz M.I (IzyaanImthiaz)
 ### Member 3 - 
 ### Member 4 - 
 
