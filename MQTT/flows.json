@@ -61,6 +61,122 @@
         "name": "MongoDB_Input"
     },
     {
+        "id": "aa895b6a92e92aaf",
+        "type": "ui_group",
+        "name": "Heat Index",
+        "tab": "872b2bf38620df2f",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4a6a9cb107207e7e",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "872b2bf38620df2f",
+        "type": "ui_tab",
+        "name": "new",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
         "id": "f0e2385baadcf895",
         "type": "http in",
         "z": "2e4e910c9b8b965f",
@@ -327,34 +443,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 420,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "20d9b4c07a596a07",
-        "type": "http in",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "url": "/routes",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 150,
-        "y": 860,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "48a3d3a7cfab391a",
-        "type": "http response",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 770,
-        "y": 800,
+        "x": 480,
+        "y": 160,
         "wires": []
     },
     {
@@ -407,7 +497,7 @@
         "type": "function",
         "z": "adf2d2d757d07856",
         "name": "function 2",
-        "func": "var D = new Date();\n\nmsg.payload = Number(msg.payload)\nmsg.year = D.getFullYear()\nmsg.month = D.getMonth()+1\nmsg.day = D.getDay()\nmsg.time = D.getHours() + ':' + D.getMinutes();\n\n\nreturn msg;",
+        "func": "var date = new Date();\n\nmsg.temperature = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -426,7 +516,7 @@
         "type": "function",
         "z": "adf2d2d757d07856",
         "name": "function 3",
-        "func": "\nreturn msg;",
+        "func": "var date = new Date();\n\nmsg.relativeHumidity = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -445,7 +535,7 @@
         "type": "function",
         "z": "adf2d2d757d07856",
         "name": "function 4",
-        "func": "\nreturn msg;",
+        "func": "var date = new Date();\n\nmsg.heatIndex = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -455,51 +545,56 @@
         "y": 560,
         "wires": [
             [
-                "0b683324c5480f4e"
+                "0b683324c5480f4e",
+                "dd44bf9833cabab7"
             ]
         ]
     },
     {
-        "id": "d971d860e1649c5d",
-        "type": "inject",
-        "z": "e80c4ca6875b7f28",
+        "id": "f2297da5e119da97",
+        "type": "ui_gauge",
+        "z": "adf2d2d757d07856",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
+        "group": "aa895b6a92e92aaf",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Gague",
+        "label": "F",
+        "format": "{{value | number:2}}",
+        "min": 0,
+        "max": "150",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
         ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 320,
-        "y": 180,
-        "wires": [
-            []
-        ]
+        "seg1": "80",
+        "seg2": "120",
+        "diff": false,
+        "className": "",
+        "x": 770,
+        "y": 640,
+        "wires": []
     },
     {
-        "id": "4567f27b3f4a3e71",
-        "type": "debug",
-        "z": "e80c4ca6875b7f28",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 680,
-        "y": 120,
-        "wires": []
+        "id": "dd44bf9833cabab7",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 5",
+        "func": "\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 640,
+        "wires": [
+            [
+                "f2297da5e119da97"
+            ]
+        ]
     }
 ]
