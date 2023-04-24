@@ -3,8 +3,9 @@ from Hardware.Buzzer import buzzing, buzzerpininit
 from Hardware.Servo import servopininit, SetAngle
 from Hardware.Sensor import getdata
 from Hardware.MQTT_Publish import SendData
-from Config import *
-
+from Hardware.Config import *
+from Hardware.Predict import forecst
+import datetime
 
 def heat_index(t, rh):
     print("Calculating Heat Index...")
@@ -49,6 +50,18 @@ while True:
             SendData("sensedata/t", temperature)
             SendData("sensedata/rh", humidity)
             SendData("sensedata/hi", hi)
+
+            date_object = datetime.date.today()
+            enddate_object = date_object.replace(year=date_object.year + prediction_year_range)
+            startdate_object = date_object.replace(year=date_object.year - prediction_year_range)
+            
+            startdate_string = startdate_object.strftime('%Y-%m-%d')
+            enddate_string = enddate_object.strftime('%Y-%m-%d')
+
+            rh_min = forecst('RHMIN', humidity, startdate_string, enddate_object)
+            SendData("forecast/RHMIN", str(rh_min))
+            rh_max = forecst('RHMAX', humidity, startdate_string, enddate_object)
+            SendData("forecast/RHMAX", str(rh_max))
         
             sense_interval = 10
             systim = time()
