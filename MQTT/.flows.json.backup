@@ -10,7 +10,7 @@
     {
         "id": "adf2d2d757d07856",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "IOT_Connection_MQTT",
         "disabled": false,
         "info": "",
         "env": []
@@ -368,7 +368,7 @@
         "id": "5e0ed7c79851fcfe",
         "type": "mqtt in",
         "z": "adf2d2d757d07856",
-        "name": "MQTT_Temperature",
+        "name": "MQTT_Temperature_data",
         "topic": "sensedata/t",
         "qos": "0",
         "datatype": "utf8",
@@ -377,7 +377,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
+        "x": 190,
         "y": 280,
         "wires": [
             [
@@ -390,7 +390,7 @@
         "id": "7611354ed8017563",
         "type": "mqtt in",
         "z": "adf2d2d757d07856",
-        "name": "MQTT_Relative Humidity",
+        "name": "MQTT_Relative Humidity_data",
         "topic": "sensedata/rh",
         "qos": "0",
         "datatype": "auto-detect",
@@ -399,7 +399,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 150,
+        "x": 170,
         "y": 420,
         "wires": [
             [
@@ -412,7 +412,7 @@
         "id": "c5a8ddad1eb3bc20",
         "type": "mqtt in",
         "z": "adf2d2d757d07856",
-        "name": "MQTT_Heat index",
+        "name": "MQTT_Heat index_data",
         "topic": "sensedata/hi",
         "qos": "0",
         "datatype": "auto",
@@ -421,7 +421,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
+        "x": 180,
         "y": 560,
         "wires": [
             [
@@ -434,7 +434,7 @@
         "id": "64df18a8a1d909ca",
         "type": "debug",
         "z": "adf2d2d757d07856",
-        "name": "debug_HI",
+        "name": "debug_HeatIndex",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -443,8 +443,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 460,
-        "y": 160,
+        "x": 510,
+        "y": 40,
         "wires": []
     },
     {
@@ -496,14 +496,14 @@
         "id": "92eae0a8963907e9",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "function 2",
+        "name": "Populate date/time",
         "func": "var date = new Date();\n\nmsg.temperature = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
+        "x": 510,
         "y": 280,
         "wires": [
             [
@@ -515,14 +515,14 @@
         "id": "b92cfe7f08f371a6",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "function 3",
+        "name": "Populate date/time",
         "func": "var date = new Date();\n\nmsg.relativeHumidity = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
+        "x": 510,
         "y": 420,
         "wires": [
             [
@@ -534,14 +534,14 @@
         "id": "0d06ea34c5ed189b",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "function 4",
+        "name": "Populate date/time",
         "func": "var date = new Date();\n\nmsg.heatIndex = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
+        "x": 510,
         "y": 560,
         "wires": [
             [
@@ -596,5 +596,252 @@
                 "f2297da5e119da97"
             ]
         ]
+    },
+    {
+        "id": "187a08d0cf89e43d",
+        "type": "http in",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "url": "/Login",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 720,
+        "wires": [
+            [
+                "3b53214e03ddf525"
+            ]
+        ]
+    },
+    {
+        "id": "3b53214e03ddf525",
+        "type": "template",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<html>\n<head>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n        integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n</head>\n<body>\n<section class=\"vh-100\">\n    <div class=\"container-fluid h-custom\">\n        <div class=\"row d-flex justify-content-center align-items-center h-100\">\n            <div class=\"col-md-9 col-lg-6 col-xl-5\">\n                <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n            </div>\n            <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n                <form onsubmit=\"http://127.0.0.1:1880/Home\">\n\n                    <!-- Email input -->\n                    <div class=\"form-outline mb-4\">\n                        <input type=\"text\" id=\"form3Example3\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid user name\" />\n                        <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n                    </div>\n\n                    <!-- Password input -->\n                    <div class=\"form-outline mb-3\">\n                        <input type=\"password\" id=\"form3Example4\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n                        <label class=\"form-label\" for=\"form3Example4\">Password</label>\n                    </div>\n\n                    <div class=\"d-flex justify-content-between align-items-center\">\n                        <!-- Checkbox -->\n                        <div class=\"form-check mb-0\">\n                            <input class=\"form-check-input me-2\" type=\"checkbox\" value=\"\" id=\"form2Example3\" />\n                            <label class=\"form-check-label\" for=\"form2Example3\">\n                Remember me\n              </label>\n                        </div>\n                        <a href=\"#!\" class=\"text-body\">Forgot password?</a>\n                    </div>\n\n                    <div class=\"text-center text-lg-start mt-4 pt-2\">\n                        <input type=\"submit\"  class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\"/>\n                        \n                    </div>\n\n                </form>\n            </div>\n        </div>\n    </div>\n    <div\n        class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n        <!-- Copyright -->\n        <div class=\"text-white mb-3 mb-md-0\">\n            Copyright © 2020. All rights reserved.\n        </div>\n        <!-- Copyright -->\n\n        <!-- Right -->\n        <div>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-facebook-f\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-twitter\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-google\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white\">\n                <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n\n            \n        </div>\n        <!-- Right -->\n    </div>\n</section>\n</body>\n</html>",
+        "output": "str",
+        "x": 480,
+        "y": 720,
+        "wires": [
+            [
+                "7a6dc22f0162a6d9"
+            ]
+        ]
+    },
+    {
+        "id": "7a6dc22f0162a6d9",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "eb304b892640f72b",
+        "type": "template",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<html>\n<head>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n        integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n</head>\n<body>\n<section class=\"vh-100\">\n    <div class=\"container-fluid h-custom\">\n        <div class=\"row d-flex justify-content-center align-items-center h-100\">\n            <div class=\"col-md-9 col-lg-6 col-xl-5\">\n                <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n            </div>\n            <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n                <form>\n\n                    <!-- Email input -->\n                    <div class=\"form-outline mb-4\">\n                        <input type=\"text\" id=\"form3Example3\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid user name\" />\n                        <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n                    </div>\n\n                    <!-- Password input -->\n                    <div class=\"form-outline mb-3\">\n                        <input type=\"password\" id=\"form3Example4\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n                        <label class=\"form-label\" for=\"form3Example4\">Password</label>\n                    </div>\n\n                    <div class=\"d-flex justify-content-between align-items-center\">\n                        <!-- Checkbox -->\n                        <div class=\"form-check mb-0\">\n                            <input class=\"form-check-input me-2\" type=\"checkbox\" value=\"\" id=\"form2Example3\" />\n                            <label class=\"form-check-label\" for=\"form2Example3\">\n                Remember me\n              </label>\n                        </div>\n                        <a href=\"#!\" class=\"text-body\">Forgot password?</a>\n                    </div>\n\n                    <div class=\"text-center text-lg-start mt-4 pt-2\">\n                        <button type=\"button\" class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\">Login</button>\n                        \n                    </div>\n\n                </form>\n            </div>\n        </div>\n    </div>\n    <div\n        class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n        <!-- Copyright -->\n        <div class=\"text-white mb-3 mb-md-0\">\n            Copyright © 2020. All rights reserved.\n        </div>\n        <!-- Copyright -->\n\n        <!-- Right -->\n        <div>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-facebook-f\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-twitter\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-google\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white\">\n                <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n\n            <a href=\"http://127.0.0.1:1880/ui\" class=\"text-white\">\n               ssssssssssssssssssssssssssssss <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n        </div>\n        <!-- Right -->\n    </div>\n</section>\n</body>\n</html>",
+        "output": "str",
+        "x": 480,
+        "y": 800,
+        "wires": [
+            [
+                "851e4cdd6e09c1f5"
+            ]
+        ]
+    },
+    {
+        "id": "a65d32685fe74384",
+        "type": "http in",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "url": "/Home",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 800,
+        "wires": [
+            [
+                "eb304b892640f72b"
+            ]
+        ]
+    },
+    {
+        "id": "851e4cdd6e09c1f5",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "e5b1fb5f29510c6a",
+        "type": "e-mail in",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "protocol": "IMAP",
+        "server": "imap.gmail.com",
+        "useSSL": true,
+        "autotls": "never",
+        "port": "993",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "box": "INBOX",
+        "disposition": "Read",
+        "criteria": "UNSEEN",
+        "repeat": "300",
+        "fetch": "auto",
+        "inputs": 1,
+        "x": 490,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8f7f8ca183e9b917",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Predicted RHmax",
+        "topic": "forecast/RHMAX",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "0223013464cb6ebc",
+                "64df18a8a1d909ca"
+            ]
+        ]
+    },
+    {
+        "id": "0223013464cb6ebc",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Populate date/time",
+        "func": "return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5856c80dec9b4fca",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "RHMAX",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 830,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "4f75acc59ec323a1",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Predicted RHmin",
+        "topic": "forecast/RHMIN",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "010bdcad19504c22",
+                "64df18a8a1d909ca"
+            ]
+        ]
+    },
+    {
+        "id": "010bdcad19504c22",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Populate date/time",
+        "func": "var inputString = msg.payload;\nvar regex = /(\\d{4}-\\d{2}-\\d{2})\\s+([\\d.]+)/g;\nvar array = [];\nvar match;\n\nwhile ((match = regex.exec(inputString)) !== null) {\n    array.push({\n        date: match[1],\n        value: parseFloat(match[2])\n    });\n}\n\nmsg.payload = array;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 120,
+        "wires": [
+            [
+                "9e24fc52ab4c3959",
+                "366e83f060a4f090"
+            ]
+        ]
+    },
+    {
+        "id": "366e83f060a4f090",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "RHMIN",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 830,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9e24fc52ab4c3959",
+        "type": "debug",
+        "z": "adf2d2d757d07856",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 60,
+        "wires": []
     }
 ]
