@@ -7,7 +7,7 @@ Please go under edit and edit this file as needed for your project
 # Project Group - 030
 ### Group Leader - IT20008550 - Wijayarathna P.P (Puranjanaaa)
 ### Member 2 -  IT20350246 - Imthiaz M.I (IzyaanImthiaz)
-### Member 3 - 
+### Member 3 - IT20104580 - Senevirathne K.L.A.A.S
 ### Member 4 - 
 
 #### Brief Description of your Solution - 
