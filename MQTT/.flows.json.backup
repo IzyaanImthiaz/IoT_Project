@@ -421,7 +421,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 180,
+        "x": 200,
         "y": 560,
         "wires": [
             [
@@ -562,7 +562,7 @@
         "gtype": "gage",
         "title": "Gague",
         "label": "F",
-        "format": "{{value | number:2}}",
+        "format": "{{value | number:4}}",
         "min": 0,
         "max": "150",
         "colors": [
@@ -692,31 +692,6 @@
         "wires": []
     },
     {
-        "id": "e5b1fb5f29510c6a",
-        "type": "e-mail in",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "protocol": "IMAP",
-        "server": "imap.gmail.com",
-        "useSSL": true,
-        "autotls": "never",
-        "port": "993",
-        "authtype": "BASIC",
-        "saslformat": true,
-        "token": "oauth2Response.access_token",
-        "box": "INBOX",
-        "disposition": "Read",
-        "criteria": "UNSEEN",
-        "repeat": "300",
-        "fetch": "auto",
-        "inputs": 1,
-        "x": 490,
-        "y": 880,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "8f7f8ca183e9b917",
         "type": "mqtt in",
         "z": "adf2d2d757d07856",
@@ -742,17 +717,19 @@
         "id": "0223013464cb6ebc",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "Populate date/time",
-        "func": "return msg;",
+        "name": "Populate as json object/RHmax",
+        "func": "var inputString = msg.payload;\nvar regex = /(\\d{4}-\\d{2}-\\d{2})\\s+([\\d.]+)/g;\nvar array = [];\nvar match;\nvar index = 1;\n\nwhile ((match = regex.exec(inputString)) !== null) {\n    array.push({\n        date: match[1],\n        value: parseFloat(match[2]),\n        index: index\n    });\n    index = index + 1\n}\n\nmsg.payload = array;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 510,
+        "x": 550,
         "y": 200,
         "wires": [
-            []
+            [
+                "453b7e8d72c98620"
+            ]
         ]
     },
     {
@@ -763,10 +740,10 @@
         "name": "",
         "collection": "RHMAX",
         "payonly": false,
-        "upsert": false,
-        "multi": false,
-        "operation": "store",
-        "x": 830,
+        "upsert": true,
+        "multi": true,
+        "operation": "update",
+        "x": 1410,
         "y": 200,
         "wires": []
     },
@@ -796,19 +773,18 @@
         "id": "010bdcad19504c22",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "Populate date/time",
-        "func": "var inputString = msg.payload;\nvar regex = /(\\d{4}-\\d{2}-\\d{2})\\s+([\\d.]+)/g;\nvar array = [];\nvar match;\n\nwhile ((match = regex.exec(inputString)) !== null) {\n    array.push({\n        date: match[1],\n        value: parseFloat(match[2])\n    });\n}\n\nmsg.payload = array;\n\nreturn msg;",
+        "name": "Populate as json object/RHmin",
+        "func": "var inputString = msg.payload;\nvar regex = /(\\d{4}-\\d{2}-\\d{2})\\s+([\\d.]+)/g;\nvar array = [];\nvar match;\nvar index=1;\n\nwhile ((match = regex.exec(inputString)) !== null) {\n    array.push({\n        date: match[1],\n        value: parseFloat(match[2]),\n        index: index\n    });\n    index=index+1\n}\n\nmsg.payload = array;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 510,
+        "x": 550,
         "y": 120,
         "wires": [
             [
-                "9e24fc52ab4c3959",
-                "366e83f060a4f090"
+                "4fad65cc5a7c4655"
             ]
         ]
     },
@@ -819,11 +795,11 @@
         "mongodb": "0c3ed7beda01e705",
         "name": "",
         "collection": "RHMIN",
-        "payonly": false,
-        "upsert": false,
-        "multi": false,
-        "operation": "store",
-        "x": 830,
+        "payonly": true,
+        "upsert": true,
+        "multi": true,
+        "operation": "update",
+        "x": 1410,
         "y": 120,
         "wires": []
     },
@@ -831,17 +807,94 @@
         "id": "9e24fc52ab4c3959",
         "type": "debug",
         "z": "adf2d2d757d07856",
-        "name": "debug 1",
+        "name": "debug Predictions",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
-        "y": 60,
+        "x": 1190,
+        "y": 20,
         "wires": []
+    },
+    {
+        "id": "4fad65cc5a7c4655",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Convert Array to individual objects",
+        "func": "msg.payload.forEach(function (/** @type {any} */ obj) {\n    node.send({\n        payload: obj.value,\n        date: obj.date,\n    });\n});",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 120,
+        "wires": [
+            [
+                "7279bd6905676202"
+            ]
+        ]
+    },
+    {
+        "id": "453b7e8d72c98620",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Convert Array to individual objects",
+        "func": "msg.payload.forEach(function (/** @type {any} */ obj) {\n    node.send({\n        payload: obj.value,\n        _id: obj._id,\n        date: obj.date\n    });\n});",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 200,
+        "wires": [
+            [
+                "9e24fc52ab4c3959",
+                "a79c0157f16b9187"
+            ]
+        ]
+    },
+    {
+        "id": "7279bd6905676202",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 6",
+        "func": "var collectionName = \"RHMIN\";\nvar update = {\n    'collection': collectionName, 'operation': 'update', query: { date: msg.date }, 'payload': {$set: {value:msg.payload,date:msg.date}}  };\nreturn update\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 120,
+        "wires": [
+            [
+                "366e83f060a4f090"
+            ]
+        ]
+    },
+    {
+        "id": "a79c0157f16b9187",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 7",
+        "func": "var collectionName = \"RHMAX\";\nvar update = {\n    'collection': collectionName, 'operation': 'update', query: { date: msg.date }, 'payload': {$set: {value:msg.payload,date:msg.date}}  };\nreturn update\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 200,
+        "wires": [
+            [
+                "5856c80dec9b4fca"
+            ]
+        ]
     }
 ]
