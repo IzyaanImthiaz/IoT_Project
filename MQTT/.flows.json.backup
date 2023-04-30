@@ -177,6 +177,18 @@
         "hidden": false
     },
     {
+        "id": "3e93e72a21759ff4",
+        "type": "remote-config",
+        "name": "Node-RED UI",
+        "host": "localhost",
+        "protocol": "http",
+        "port": "1880",
+        "baseurl": "/ui",
+        "instancehash": "qfwzsfn7a1ml0rvx9auzw9zg4ojkfa3br6ddgcmnl93g59ry42yihlmope293w8c",
+        "server": "nodered02.remote-red.com",
+        "region": "de"
+    },
+    {
         "id": "f0e2385baadcf895",
         "type": "http in",
         "z": "2e4e910c9b8b965f",
@@ -399,7 +411,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
+        "x": 150,
         "y": 420,
         "wires": [
             [
@@ -421,7 +433,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 200,
+        "x": 180,
         "y": 560,
         "wires": [
             [
@@ -458,7 +470,7 @@
         "upsert": false,
         "multi": false,
         "operation": "store",
-        "x": 840,
+        "x": 900,
         "y": 280,
         "wires": []
     },
@@ -473,7 +485,7 @@
         "upsert": false,
         "multi": false,
         "operation": "store",
-        "x": 860,
+        "x": 920,
         "y": 420,
         "wires": []
     },
@@ -488,7 +500,7 @@
         "upsert": false,
         "multi": false,
         "operation": "store",
-        "x": 840,
+        "x": 900,
         "y": 560,
         "wires": []
     },
@@ -546,7 +558,8 @@
         "wires": [
             [
                 "0b683324c5480f4e",
-                "dd44bf9833cabab7"
+                "dd44bf9833cabab7",
+                "6425f3eb1595774a"
             ]
         ]
     },
@@ -574,7 +587,7 @@
         "seg2": "120",
         "diff": false,
         "className": "",
-        "x": 770,
+        "x": 930,
         "y": 640,
         "wires": []
     },
@@ -589,27 +602,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
-        "y": 640,
+        "x": 720,
+        "y": 660,
         "wires": [
             [
-                "f2297da5e119da97"
-            ]
-        ]
-    },
-    {
-        "id": "187a08d0cf89e43d",
-        "type": "http in",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "url": "/Login",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 140,
-        "y": 720,
-        "wires": [
-            [
+                "f2297da5e119da97",
                 "3b53214e03ddf525"
             ]
         ]
@@ -623,73 +620,13 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<html>\n<head>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n        integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n</head>\n<body>\n<section class=\"vh-100\">\n    <div class=\"container-fluid h-custom\">\n        <div class=\"row d-flex justify-content-center align-items-center h-100\">\n            <div class=\"col-md-9 col-lg-6 col-xl-5\">\n                <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n            </div>\n            <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n                <form onsubmit=\"http://127.0.0.1:1880/Home\">\n\n                    <!-- Email input -->\n                    <div class=\"form-outline mb-4\">\n                        <input type=\"text\" id=\"form3Example3\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid user name\" />\n                        <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n                    </div>\n\n                    <!-- Password input -->\n                    <div class=\"form-outline mb-3\">\n                        <input type=\"password\" id=\"form3Example4\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n                        <label class=\"form-label\" for=\"form3Example4\">Password</label>\n                    </div>\n\n                    <div class=\"d-flex justify-content-between align-items-center\">\n                        <!-- Checkbox -->\n                        <div class=\"form-check mb-0\">\n                            <input class=\"form-check-input me-2\" type=\"checkbox\" value=\"\" id=\"form2Example3\" />\n                            <label class=\"form-check-label\" for=\"form2Example3\">\n                Remember me\n              </label>\n                        </div>\n                        <a href=\"#!\" class=\"text-body\">Forgot password?</a>\n                    </div>\n\n                    <div class=\"text-center text-lg-start mt-4 pt-2\">\n                        <input type=\"submit\"  class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\"/>\n                        \n                    </div>\n\n                </form>\n            </div>\n        </div>\n    </div>\n    <div\n        class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n        <!-- Copyright -->\n        <div class=\"text-white mb-3 mb-md-0\">\n            Copyright © 2020. All rights reserved.\n        </div>\n        <!-- Copyright -->\n\n        <!-- Right -->\n        <div>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-facebook-f\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-twitter\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-google\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white\">\n                <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n\n            \n        </div>\n        <!-- Right -->\n    </div>\n</section>\n</body>\n</html>",
+        "template": "<html>\n<head>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n        integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n</head>\n<body>\n<section class=\"vh-100\">\n    <div class=\"container-fluid h-custom\">\n        <div class=\"row d-flex justify-content-center align-items-center h-100\">\n            <div class=\"col-md-9 col-lg-6 col-xl-5\">\n                <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n            </div>\n            <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n                <form onsubmit=\"/Home\">\n\n                    <!-- Email input -->\n                    <div class=\"form-outline mb-4\">\n                        <input type=\"text\" id=\"form3Example3\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid user name\" />\n                        <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n                    </div>\n\n                    <!-- Password input -->\n                    <div class=\"form-outline mb-3\">\n                        <input type=\"password\" id=\"form3Example4\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n                        <label class=\"form-label\" for=\"form3Example4\">Password</label>\n                    </div>\n\n                    <div class=\"d-flex justify-content-between align-items-center\">\n                        <!-- Checkbox -->\n                        <div class=\"form-check mb-0\">\n                            <input class=\"form-check-input me-2\" type=\"checkbox\" value=\"\" id=\"form2Example3\" />\n                            <label class=\"form-check-label\" for=\"form2Example3\">\n                Remember me\n              </label>\n                        </div>\n                        <a href=\"#!\" class=\"text-body\">Forgot password?</a>\n                    </div>\n\n                    <div class=\"text-center text-lg-start mt-4 pt-2\">\n                        <input type=\"submit\"  class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\"/>\n                        \n                    </div>\n\n                </form>\n            </div>\n        </div>\n    </div>\n    <div\n        class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n        <!-- Copyright -->\n        <div class=\"text-white mb-3 mb-md-0\">\n            Copyright © 2020. All rights reserved.\n        </div>\n        <!-- Copyright -->\n\n        <!-- Right -->\n        <div>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-facebook-f\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-twitter\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-google\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white\">\n                <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n\n            \n        </div>\n        <!-- Right -->\n    </div>\n</section>\n</body>\n</html>",
         "output": "str",
-        "x": 480,
-        "y": 720,
+        "x": 940,
+        "y": 700,
         "wires": [
-            [
-                "7a6dc22f0162a6d9"
-            ]
+            []
         ]
-    },
-    {
-        "id": "7a6dc22f0162a6d9",
-        "type": "http response",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 770,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "eb304b892640f72b",
-        "type": "template",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "<html>\n<head>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n        integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n</head>\n<body>\n<section class=\"vh-100\">\n    <div class=\"container-fluid h-custom\">\n        <div class=\"row d-flex justify-content-center align-items-center h-100\">\n            <div class=\"col-md-9 col-lg-6 col-xl-5\">\n                <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n            </div>\n            <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n                <form>\n\n                    <!-- Email input -->\n                    <div class=\"form-outline mb-4\">\n                        <input type=\"text\" id=\"form3Example3\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid user name\" />\n                        <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n                    </div>\n\n                    <!-- Password input -->\n                    <div class=\"form-outline mb-3\">\n                        <input type=\"password\" id=\"form3Example4\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n                        <label class=\"form-label\" for=\"form3Example4\">Password</label>\n                    </div>\n\n                    <div class=\"d-flex justify-content-between align-items-center\">\n                        <!-- Checkbox -->\n                        <div class=\"form-check mb-0\">\n                            <input class=\"form-check-input me-2\" type=\"checkbox\" value=\"\" id=\"form2Example3\" />\n                            <label class=\"form-check-label\" for=\"form2Example3\">\n                Remember me\n              </label>\n                        </div>\n                        <a href=\"#!\" class=\"text-body\">Forgot password?</a>\n                    </div>\n\n                    <div class=\"text-center text-lg-start mt-4 pt-2\">\n                        <button type=\"button\" class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\">Login</button>\n                        \n                    </div>\n\n                </form>\n            </div>\n        </div>\n    </div>\n    <div\n        class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n        <!-- Copyright -->\n        <div class=\"text-white mb-3 mb-md-0\">\n            Copyright © 2020. All rights reserved.\n        </div>\n        <!-- Copyright -->\n\n        <!-- Right -->\n        <div>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-facebook-f\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-twitter\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-google\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white\">\n                <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n\n            <a href=\"http://127.0.0.1:1880/ui\" class=\"text-white\">\n               ssssssssssssssssssssssssssssss <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n        </div>\n        <!-- Right -->\n    </div>\n</section>\n</body>\n</html>",
-        "output": "str",
-        "x": 480,
-        "y": 800,
-        "wires": [
-            [
-                "851e4cdd6e09c1f5"
-            ]
-        ]
-    },
-    {
-        "id": "a65d32685fe74384",
-        "type": "http in",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "url": "/Home",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 150,
-        "y": 800,
-        "wires": [
-            [
-                "eb304b892640f72b"
-            ]
-        ]
-    },
-    {
-        "id": "851e4cdd6e09c1f5",
-        "type": "http response",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 770,
-        "y": 800,
-        "wires": []
     },
     {
         "id": "8f7f8ca183e9b917",
@@ -743,7 +680,7 @@
         "upsert": true,
         "multi": true,
         "operation": "update",
-        "x": 1410,
+        "x": 1510,
         "y": 200,
         "wires": []
     },
@@ -799,7 +736,7 @@
         "upsert": true,
         "multi": true,
         "operation": "update",
-        "x": 1410,
+        "x": 1510,
         "y": 120,
         "wires": []
     },
@@ -816,7 +753,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1190,
+        "x": 1270,
         "y": 20,
         "wires": []
     },
@@ -835,7 +772,8 @@
         "y": 120,
         "wires": [
             [
-                "7279bd6905676202"
+                "7279bd6905676202",
+                "9e24fc52ab4c3959"
             ]
         ]
     },
@@ -863,14 +801,14 @@
         "id": "7279bd6905676202",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "function 6",
+        "name": "Update RHMIN",
         "func": "var collectionName = \"RHMIN\";\nvar update = {\n    'collection': collectionName, 'operation': 'update', query: { date: msg.date }, 'payload': {$set: {value:msg.payload,date:msg.date}}  };\nreturn update\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
+        "x": 1260,
         "y": 120,
         "wires": [
             [
@@ -882,18 +820,112 @@
         "id": "a79c0157f16b9187",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "function 7",
+        "name": "Update RHMAX",
         "func": "var collectionName = \"RHMAX\";\nvar update = {\n    'collection': collectionName, 'operation': 'update', query: { date: msg.date }, 'payload': {$set: {value:msg.payload,date:msg.date}}  };\nreturn update\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
+        "x": 1260,
         "y": 200,
         "wires": [
             [
                 "5856c80dec9b4fca"
+            ]
+        ]
+    },
+    {
+        "id": "0cc0af6ce956ef69",
+        "type": "uibuilder",
+        "z": "adf2d2d757d07856",
+        "d": true,
+        "name": "Frontend",
+        "topic": "",
+        "url": "Sample",
+        "fwdInMessages": false,
+        "allowScripts": true,
+        "allowStyles": true,
+        "copyIndex": true,
+        "templateFolder": "blank",
+        "extTemplate": "",
+        "showfolder": false,
+        "useSecurity": false,
+        "sessionLength": 432000,
+        "tokenAutoExtend": false,
+        "reload": false,
+        "sourceFolder": "src",
+        "x": 120,
+        "y": 800,
+        "wires": [
+            [
+                "4ac5e02c1f0f4df4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "4ac5e02c1f0f4df4",
+        "type": "mongodb in",
+        "z": "adf2d2d757d07856",
+        "d": true,
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "UserData",
+        "operation": "find",
+        "x": 400,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "652e65b12cd5ac29",
+        "type": "remote-access",
+        "z": "adf2d2d757d07856",
+        "d": true,
+        "confignode": "3e93e72a21759ff4",
+        "name": "",
+        "verbose": 0,
+        "x": 220,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e92cc05d548cc490",
+        "type": "e-mail",
+        "z": "adf2d2d757d07856",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "secure": true,
+        "tls": true,
+        "name": "anupasenevirathne@gmail.com",
+        "dname": "Email output",
+        "x": 950,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "6425f3eb1595774a",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 6",
+        "func": "var alarm_flag=context.get(\"alarm_flag\")\nif(typeof alarm_flag==\"undefined\")\nalarm_flag=false\n\nif (msg.heatIndex>80 && !alarm_flag){\n    alarm_flag=true\n    msg.topic = \"Heat Index Alert!!!\"\n    msg.payload=\"Danger detected!! the heat index is now at \" + msg.heatIndex +\" F\"\n    context.set(\"alarm_flag\",alarm_flag)\n    return msg\n}\nif (msg.heatIndex <= 80 && alarm_flag){\n    alarm_flag=false\n    context.set(\"alarm_flag\",alarm_flag)\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 780,
+        "wires": [
+            [
+                "e92cc05d548cc490"
             ]
         ]
     }

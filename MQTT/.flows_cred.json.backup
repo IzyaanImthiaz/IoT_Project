@@ -1,3 +1,17 @@
 {
-    "91527c21ef358a1f": {}
+    "91527c21ef358a1f": {},
+    "0c3ed7beda01e705": {
+        "user": "AnupaZen",
+        "password": "AnupaIOT-123"
+    },
+    "0cc0af6ce956ef69": {
+        "jwtSecret": "Replace This With A Real Secret"
+    },
+    "3e93e72a21759ff4": {
+        "instanceauth": "fgun36cv9x5bjzuf0wmgi83mhmqlydagtjid7uheq9kh92pgzzrthariwddy2z74"
+    },
+    "e92cc05d548cc490": {
+        "userid": "rpi222iot@gmail.com",
+        "password": "Rpi-123456"
+    }
 }
