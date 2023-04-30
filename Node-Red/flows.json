@@ -1,0 +1,1223 @@
+[
+    {
+        "id": "9a207c69eabd3b3d",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "468d2e434654a75e",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "338e97f11f51093e",
+        "type": "function",
+        "z": "9a207c69eabd3b3d",
+        "name": "Pedicted Past 12 months  RH ",
+        "func": "var rhData = [];\n\nconst months = [\n     'March 2023',\n     'February 2023', \n     'January 2023',\n     'December 2022',\n     'November 2022',\n     'October 2022', \n     'September 2022', \n     'August 2022', \n     'July 2022', \n     'June 2022', \n     'May 2022',\n     'April 2022']\n\n\n\n\nfor (let i = 0; i < months.length; i++) {\n    const dataSet = {\n        \"rh\": Math.random()*(70 - 20) + 20,\n        \"month\" : months[i]\n\n    }\n    \n    rhData.push(dataSet)\n}\n\nmsg.payload = rhData\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 260,
+        "wires": [
+            [
+                "fba3498020037a03",
+                "e7ea0a1655a38c54"
+            ]
+        ]
+    },
+    {
+        "id": "fba3498020037a03",
+        "type": "split",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "51a761c07aba97ea"
+            ]
+        ]
+    },
+    {
+        "id": "51a761c07aba97ea",
+        "type": "change",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload.month",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.rh",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 320,
+        "wires": [
+            [
+                "468d2e434654a75e",
+                "a59dd2fe3eb43cd6"
+            ]
+        ]
+    },
+    {
+        "id": "4ed5e4f5849d01a5",
+        "type": "ui_button",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "group": "e6de70440d117b09",
+        "order": 61,
+        "width": 10,
+        "height": 1,
+        "passthru": false,
+        "label": "Show Data",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 420,
+        "wires": [
+            [
+                "338e97f11f51093e",
+                "7e4bed8c4b63319d"
+            ]
+        ]
+    },
+    {
+        "id": "c557d9621bb7bd67",
+        "type": "ui_text",
+        "z": "9a207c69eabd3b3d",
+        "group": "e6de70440d117b09",
+        "order": 28,
+        "width": 1,
+        "height": 2,
+        "name": "",
+        "label": "               RH (%)",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 840,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "76d8383d9bd9fb4e",
+        "type": "ui_text",
+        "z": "9a207c69eabd3b3d",
+        "group": "e6de70440d117b09",
+        "order": 41,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "Month",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 850,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "28dbe8c482b766b7",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "7e4bed8c4b63319d",
+        "type": "function",
+        "z": "9a207c69eabd3b3d",
+        "name": "Pedicted Future 12 months  RH ",
+        "func": "var rhData = [];\n\nconst months = [\n    'May 2023',\n    'June 2023',\n    'July 2023',\n    'August 2023',\n    'September 2023',\n    'October 2023',\n    'November 2023',\n    'December 2024',\n    'January 2024',\n    'February 2024',\n    'March 2024',\n    'April 2024']\n\n\nfor (let i = 0; i < months.length; i++) {\n    const dataSet = {\n        \"rh\": Math.random() * (70 - 20) + 20,\n        \"month\" : months[i]\n\n    }\n    \n    rhData.push(dataSet)\n}\n\nmsg.payload = rhData\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 560,
+        "wires": [
+            [
+                "ce2ede15c9e7f2d3"
+            ]
+        ]
+    },
+    {
+        "id": "ce2ede15c9e7f2d3",
+        "type": "split",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 470,
+        "y": 620,
+        "wires": [
+            [
+                "b8b0ee1cd9285e53"
+            ]
+        ]
+    },
+    {
+        "id": "b8b0ee1cd9285e53",
+        "type": "change",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload.month",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.rh",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 620,
+        "wires": [
+            [
+                "28dbe8c482b766b7",
+                "cb7389cd4026b1e1"
+            ]
+        ]
+    },
+    {
+        "id": "86cbb66c6ddae0ff",
+        "type": "ui_text",
+        "z": "9a207c69eabd3b3d",
+        "group": "e6de70440d117b09",
+        "order": 45,
+        "width": 1,
+        "height": 2,
+        "name": "",
+        "label": "               RH (%)",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 880,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "76308b13eb14a3b9",
+        "type": "ui_text",
+        "z": "9a207c69eabd3b3d",
+        "group": "e6de70440d117b09",
+        "order": 58,
+        "width": 2,
+        "height": 1,
+        "name": "",
+        "label": "Month",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 890,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "cb7389cd4026b1e1",
+        "type": "ui_chart",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "group": "e6de70440d117b09",
+        "order": 46,
+        "width": 27,
+        "height": 6,
+        "label": "Predicted Future 12 Months Relative Humidity",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#fd5858",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 980,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a59dd2fe3eb43cd6",
+        "type": "ui_chart",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "group": "e6de70440d117b09",
+        "order": 29,
+        "width": 27,
+        "height": 6,
+        "label": "Predicted Past 12 months Relative Humidity",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#68e6e8",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 730,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4f2336484187190b",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "fc0452e2a507b920",
+        "type": "inject",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 900,
+        "wires": [
+            [
+                "6f9729626c8b0d80"
+            ]
+        ]
+    },
+    {
+        "id": "95c5a82924b3b1a9",
+        "type": "ui_text",
+        "z": "9a207c69eabd3b3d",
+        "group": "e6de70440d117b09",
+        "order": 4,
+        "width": 8,
+        "height": 1,
+        "name": "",
+        "label": "<font size =5> Current Relative Humidity    : ",
+        "format": "<font size =6>{{msg.payload}}%",
+        "layout": "row-right",
+        "className": "",
+        "x": 840,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "8247d8217112994d",
+        "type": "ui_gauge",
+        "z": "9a207c69eabd3b3d",
+        "name": "Relative Humidity",
+        "group": "e6de70440d117b09",
+        "order": 10,
+        "width": 8,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Relative Humidity",
+        "label": "units",
+        "format": "{{value}} %",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 750,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "e7ea0a1655a38c54",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "4f8cca5e0db84485",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "c1f6818e568c8aa5",
+        "type": "inject",
+        "z": "9a207c69eabd3b3d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 1220,
+        "wires": [
+            [
+                "7efc1e77ca521624"
+            ]
+        ]
+    },
+    {
+        "id": "7efc1e77ca521624",
+        "type": "mongodb-aleph-in",
+        "z": "9a207c69eabd3b3d",
+        "mongodb": "65c9fb278b966524",
+        "name": "Mongo Heat_Index",
+        "collection": "Heat_Index",
+        "operation": "find",
+        "x": 330,
+        "y": 1220,
+        "wires": [
+            [
+                "4f8cca5e0db84485",
+                "f67b738c325d4848"
+            ]
+        ]
+    },
+    {
+        "id": "4cd71819c2df6045",
+        "type": "ui_gauge",
+        "z": "9a207c69eabd3b3d",
+        "name": "Heat Index",
+        "group": "e6de70440d117b09",
+        "order": 8,
+        "width": 8,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Heat Index",
+        "label": "units",
+        "format": "{{value}}  ",
+        "min": 0,
+        "max": "150",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "90",
+        "seg2": "105",
+        "diff": false,
+        "className": "",
+        "x": 630,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "f67b738c325d4848",
+        "type": "function",
+        "z": "9a207c69eabd3b3d",
+        "name": "function 1",
+        "func": "let arr = msg.payload\nlet latestVal\n\n\n\nlatestVal = arr[arr.length - 1]\n\nmsg = latestVal\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 1380,
+        "wires": [
+            [
+                "2f1aef2f4b6a914d",
+                "4cd71819c2df6045",
+                "7f9e3d6541a53e5b"
+            ]
+        ]
+    },
+    {
+        "id": "2f1aef2f4b6a914d",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "6f9729626c8b0d80",
+        "type": "mongodb-aleph-in",
+        "z": "9a207c69eabd3b3d",
+        "mongodb": "65c9fb278b966524",
+        "name": "",
+        "collection": "Relative_Humidity",
+        "operation": "find",
+        "x": 320,
+        "y": 920,
+        "wires": [
+            [
+                "4f2336484187190b",
+                "f840cd15d05ebf64"
+            ]
+        ]
+    },
+    {
+        "id": "f840cd15d05ebf64",
+        "type": "function",
+        "z": "9a207c69eabd3b3d",
+        "name": "function 2",
+        "func": "let arr = msg.payload\nlet latestVal\n\n\n\nlatestVal = arr[arr.length - 1]\n\nmsg = latestVal\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 980,
+        "wires": [
+            [
+                "8247d8217112994d",
+                "95c5a82924b3b1a9",
+                "3d501ec43c57ac89"
+            ]
+        ]
+    },
+    {
+        "id": "3d501ec43c57ac89",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "7f9e3d6541a53e5b",
+        "type": "ui_text",
+        "z": "9a207c69eabd3b3d",
+        "group": "e6de70440d117b09",
+        "order": 2,
+        "width": 8,
+        "height": 1,
+        "name": "",
+        "label": "<font size =5> Current Heat Index    : ",
+        "format": "<font size =6>{{msg.payload}} °F",
+        "layout": "row-right",
+        "className": "",
+        "x": 700,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "f6e1a6ab6c795c81",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 1,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "cc1d3f172d9b2a2e",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 3,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "34a4aef28508ddad",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 5,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "845c3bde30dde58f",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 6,
+        "width": 30,
+        "height": 1
+    },
+    {
+        "id": "4edc9780b63ea4c1",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 7,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "bbebbb0d7177e66c",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 9,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "289328632656fd18",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 11,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "a77e8e0a6d4b36fc",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 12,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "0d5e45976373ef3c",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 13,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "a9232fcae5f64f59",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 14,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "eba2a30ca2593594",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 15,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "7aaf17360a3e9539",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 16,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "96457411fc3282fc",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 17,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "922e3d3bf3f2e8e1",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 18,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "1afe869f822e128b",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 19,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "93c7c7b01d7eb26e",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 20,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "d4564a7899dd2f82",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 21,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "d339ab2e0fd1992b",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 22,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "ad0a34d23fc58141",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 23,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "a90d4b4806aa50ba",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 24,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "7528949b7a77c8ee",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 25,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7f41d913dfdd0597",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 26,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "016dda9473a52186",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 27,
+        "width": 30,
+        "height": 1
+    },
+    {
+        "id": "327bcfc22aeda509",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 30,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "57b8ef23a795f316",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 31,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "bd808c04215dd58b",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 32,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f5ce5806402b9ba9",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 33,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "18dc1ef765c3706c",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 34,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "9a0b331e4e05b289",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 35,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "ddaa366c998d99cd",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 36,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2c1a18ca13d8cbae",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 37,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "fdac7799d4c685bb",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 38,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "b0f70e57789a2a66",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 39,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "1106f33cd4a815f5",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 40,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "a2a039f3296f84e3",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 42,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "c74de7919875e45e",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 43,
+        "width": 30,
+        "height": 1
+    },
+    {
+        "id": "f5f8bdb9944f31de",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 44,
+        "width": 30,
+        "height": 1
+    },
+    {
+        "id": "7d153c366106b81f",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 47,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "04ec5964efd42f4f",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 48,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "efaa6e2af281a4a1",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 49,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f9858a2aab7ccca6",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 50,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "9db3d534a4b10b2a",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 51,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "7348ef74885f1104",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 52,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "e3ba9e1522c0532b",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 53,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "542d3be75b885726",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 54,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "66f725c7db230626",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 55,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d0f8e4940e532966",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 56,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "bbc0c43701523776",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 57,
+        "width": 25,
+        "height": 1
+    },
+    {
+        "id": "f716d3de152dad1f",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 59,
+        "width": 3,
+        "height": 1
+    },
+    {
+        "id": "926e6941423dfecb",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 60,
+        "width": 10,
+        "height": 1
+    },
+    {
+        "id": "f8b575fe00dabf6e",
+        "type": "ui_spacer",
+        "z": "9a207c69eabd3b3d",
+        "name": "spacer",
+        "group": "e6de70440d117b09",
+        "order": 62,
+        "width": 10,
+        "height": 1
+    },
+    {
+        "id": "e6de70440d117b09",
+        "type": "ui_group",
+        "name": "Relative Humidity Dashboard ",
+        "tab": "fc04d5ce949eb927",
+        "order": 1,
+        "disp": true,
+        "width": "30",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "65c9fb278b966524",
+        "type": "mongodb-aleph-config",
+        "hostname": "cluster0.srotqsm.mongodb.net",
+        "topology": "dnscluster",
+        "connectOptions": "",
+        "port": "27017",
+        "db": "IOT_Database",
+        "name": "MongoDB"
+    },
+    {
+        "id": "fc04d5ce949eb927",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
