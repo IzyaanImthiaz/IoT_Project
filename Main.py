@@ -3,7 +3,7 @@ from Hardware.Buzzer import buzzing, buzzerpininit
 from Hardware.Servo import servopininit, SetAngle
 from Hardware.Sensor import getdata
 from Hardware.MQTT_Publish import SendData
-from Hardware.Config import *
+from Config import *
 from Hardware.Predict import forecst
 import datetime
 
