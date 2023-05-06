@@ -10,3 +10,5 @@ servo_maxangle = 180
 
 mqtt_broker = "broker.hivemq.com"
 mqtt_port = 1883
+
+prediction_year_range = 1
