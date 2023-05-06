@@ -1,0 +1,1063 @@
+[
+    {
+        "id": "2e4e910c9b8b965f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "adf2d2d757d07856",
+        "type": "tab",
+        "label": "IOT_Connection_MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e80c4ca6875b7f28",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "91527c21ef358a1f",
+        "type": "mqtt-broker",
+        "name": "IOT",
+        "broker": "broker.mqttdashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "0c3ed7beda01e705",
+        "type": "mongodb",
+        "hostname": "cluster0.srotqsm.mongodb.net",
+        "topology": "dnscluster",
+        "connectOptions": "",
+        "port": "27017",
+        "db": "IOT_Database",
+        "name": "MongoDB_Input"
+    },
+    {
+        "id": "aa895b6a92e92aaf",
+        "type": "ui_group",
+        "name": "Heat Index",
+        "tab": "872b2bf38620df2f",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4a6a9cb107207e7e",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "872b2bf38620df2f",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "fd3432368c62b02b",
+        "type": "ui_tab",
+        "name": "Login",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f0e2385baadcf895",
+        "type": "http in",
+        "z": "2e4e910c9b8b965f",
+        "name": "Get Info",
+        "url": "/log",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "4e5032ee4604b1ed"
+            ]
+        ]
+    },
+    {
+        "id": "4e5032ee4604b1ed",
+        "type": "function",
+        "z": "2e4e910c9b8b965f",
+        "name": "Set Post URL",
+        "func": "msg.url = \"getmypost\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "3a2de62341f5b138"
+            ]
+        ]
+    },
+    {
+        "id": "3a2de62341f5b138",
+        "type": "template",
+        "z": "2e4e910c9b8b965f",
+        "name": "Javascript code",
+        "field": "payload.script",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "$(document).ready(function(e) {\n    $(\"form[ajax=true]\").submit(function(e) {\n\n        e.preventDefault();\n        var form_data = $(this).serialize();\n        var form_url = $(this).attr(\"action\");\n        var form_method = $(this).attr(\"method\").toUpperCase();\n\n        $(\"#loadingimg\").show();\n\n        $.ajax({\n            url: form_url,\n            type: form_method,\n            data: form_data,\n            cache: false,\n            success: function(returnhtml) {\n                $(\"#result\").html(returnhtml);\n                $(\"#loadingimg\").hide();\n            }\n        });\n\n    });\n\n});",
+        "output": "str",
+        "x": 500,
+        "y": 340,
+        "wires": [
+            [
+                "363858de55198580"
+            ]
+        ]
+    },
+    {
+        "id": "363858de55198580",
+        "type": "template",
+        "z": "2e4e910c9b8b965f",
+        "name": "CSS code",
+        "field": "payload.style",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "input[type=text],\nselect {\n\n    width: 100 %;\n    padding: 12 px 20 px;\n    margin: 8 px 0;\n \tdisplay: inline - block;\n    border: 1 px solid;\n    border - radius: 4 px;\n    box - sizing: border - box;\n\n}\n\nninput[type=submit] {\n\n    width: 100 %;\n    background - color: #4CAF50;\n    color: white;\n    padding: 14px 20px;\n    margin: 8px 0;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}\n\n\ninput[type=submit]: hover {\n\n    background - color: #45a049;\n}\n\ndiv {\n    border-radius: 5px;\n    background-color: # f2f2f2;\n    padding: 20 px;\n\n}",
+        "output": "str",
+        "x": 660,
+        "y": 380,
+        "wires": [
+            [
+                "35ed59076b4c7074"
+            ]
+        ]
+    },
+    {
+        "id": "35ed59076b4c7074",
+        "type": "template",
+        "z": "2e4e910c9b8b965f",
+        "name": "HTML code",
+        "field": "payload.html",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n\n<head>\n    <title>My Site</title>\n    <meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no\">\n    <meta charset=\"utf-8\">\n    <script src=\"http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js\"></script>\n    <style>\n        {\n                {\n                    {\n                    payload.style\n                }\n            }\n        }\n    </style>\n</head>\n<div>\n    <form method=\"post\" action=\"{{url}}\" ajax=\"true\"><label for=\"fname\">First Name</label><input type=\"text\" id=\"fname\" name=\"firstname\"><label for=\"lname\">Last Name</label><input type=\"text\" id=\"lname\" name=\"lastname\"><label for=\"country\">Country</label><select id=\"country\" name=\"country\">\n            <option value=\"India\">India</option>\n            <option value=\"canada\">Canada</option>\n            <option value=\"usa\">USA</option>\n        </select><input type=\"submit\" value=\"Submit\"></form>\n</div>\n<div><span id=\"result\"></span></div>\n</body>\n\n</html>\n<script>\n    {\n        {\n            {\n                payload.script\n            }\n        }\n    }\n</script>",
+        "output": "str",
+        "x": 810,
+        "y": 420,
+        "wires": [
+            [
+                "c4032e10bfaf18f8"
+            ]
+        ]
+    },
+    {
+        "id": "c4032e10bfaf18f8",
+        "type": "http response",
+        "z": "2e4e910c9b8b965f",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 950,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "5cf77b1b27110ed8",
+        "type": "http in",
+        "z": "2e4e910c9b8b965f",
+        "name": "",
+        "url": "/getmypost",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 420,
+        "wires": [
+            [
+                "492aca5c971a6b24"
+            ]
+        ]
+    },
+    {
+        "id": "62ead334061ad63e",
+        "type": "function",
+        "z": "2e4e910c9b8b965f",
+        "name": "function 1",
+        "func": "msg.payload = 'The following data was submitted and available in the msg.payload: ' + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 520,
+        "wires": [
+            [
+                "cc77e56ad1ee2a52"
+            ]
+        ]
+    },
+    {
+        "id": "492aca5c971a6b24",
+        "type": "join",
+        "z": "2e4e910c9b8b965f",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 330,
+        "y": 460,
+        "wires": [
+            [
+                "62ead334061ad63e"
+            ]
+        ]
+    },
+    {
+        "id": "cc77e56ad1ee2a52",
+        "type": "http request",
+        "z": "2e4e910c9b8b965f",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 730,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5e0ed7c79851fcfe",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Temperature_data",
+        "topic": "sensedata/t",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "64df18a8a1d909ca",
+                "92eae0a8963907e9"
+            ]
+        ]
+    },
+    {
+        "id": "7611354ed8017563",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Relative Humidity_data",
+        "topic": "sensedata/rh",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "64df18a8a1d909ca",
+                "b92cfe7f08f371a6"
+            ]
+        ]
+    },
+    {
+        "id": "c5a8ddad1eb3bc20",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Heat index_data",
+        "topic": "sensedata/hi",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 560,
+        "wires": [
+            [
+                "64df18a8a1d909ca",
+                "0d06ea34c5ed189b"
+            ]
+        ]
+    },
+    {
+        "id": "64df18a8a1d909ca",
+        "type": "debug",
+        "z": "adf2d2d757d07856",
+        "name": "debug_HeatIndex",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "cb64b66e367868f5",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "temperature",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 900,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9317ee874f8a40d8",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "MongoDB_Input Relative Humidity",
+        "collection": "Relative_Humidity",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 920,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "0b683324c5480f4e",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "MongoDB_Input Heat Index",
+        "collection": "Heat_Index",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "store",
+        "x": 900,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "92eae0a8963907e9",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Populate date/time",
+        "func": "var date = new Date();\n\nmsg.temperature = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 280,
+        "wires": [
+            [
+                "cb64b66e367868f5"
+            ]
+        ]
+    },
+    {
+        "id": "b92cfe7f08f371a6",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Populate date/time",
+        "func": "var date = new Date();\n\nmsg.relativeHumidity = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 420,
+        "wires": [
+            [
+                "9317ee874f8a40d8"
+            ]
+        ]
+    },
+    {
+        "id": "0d06ea34c5ed189b",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Populate date/time",
+        "func": "var date = new Date();\n\nmsg.heatIndex = Number(msg.payload)\nmsg.date = date.getFullYear() + \"-\" + (date.getMonth() + 1) + \"-\" + date.getDate()\nmsg.time = date.getHours() + ':' + date.getMinutes();\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 560,
+        "wires": [
+            [
+                "0b683324c5480f4e",
+                "6425f3eb1595774a",
+                "f2297da5e119da97"
+            ]
+        ]
+    },
+    {
+        "id": "f2297da5e119da97",
+        "type": "ui_gauge",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "group": "aa895b6a92e92aaf",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Gague",
+        "label": "F",
+        "format": "{{value | number:4}}",
+        "min": 0,
+        "max": "150",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "80",
+        "seg2": "120",
+        "diff": false,
+        "className": "",
+        "x": 830,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "8f7f8ca183e9b917",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Predicted RHmax",
+        "topic": "forecast/RHMAX",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "0223013464cb6ebc",
+                "64df18a8a1d909ca"
+            ]
+        ]
+    },
+    {
+        "id": "0223013464cb6ebc",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Populate as json object/RHmax",
+        "func": "var inputString = msg.payload;\nvar regex = /(\\d{4}-\\d{2}-\\d{2})\\s+([\\d.]+)/g;\nvar array = [];\nvar match;\nvar index = 1;\n\nwhile ((match = regex.exec(inputString)) !== null) {\n    array.push({\n        date: match[1],\n        value: parseFloat(match[2]),\n        index: index\n    });\n    index = index + 1\n}\n\nmsg.payload = array;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "453b7e8d72c98620"
+            ]
+        ]
+    },
+    {
+        "id": "5856c80dec9b4fca",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "RHMAX",
+        "payonly": false,
+        "upsert": true,
+        "multi": true,
+        "operation": "update",
+        "x": 1510,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "4f75acc59ec323a1",
+        "type": "mqtt in",
+        "z": "adf2d2d757d07856",
+        "name": "MQTT_Predicted RHmin",
+        "topic": "forecast/RHMIN",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "91527c21ef358a1f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "010bdcad19504c22",
+                "64df18a8a1d909ca"
+            ]
+        ]
+    },
+    {
+        "id": "010bdcad19504c22",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Populate as json object/RHmin",
+        "func": "var inputString = msg.payload;\nvar regex = /(\\d{4}-\\d{2}-\\d{2})\\s+([\\d.]+)/g;\nvar array = [];\nvar match;\nvar index=1;\n\nwhile ((match = regex.exec(inputString)) !== null) {\n    array.push({\n        date: match[1],\n        value: parseFloat(match[2]),\n        index: index\n    });\n    index=index+1\n}\n\nmsg.payload = array;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 120,
+        "wires": [
+            [
+                "4fad65cc5a7c4655"
+            ]
+        ]
+    },
+    {
+        "id": "366e83f060a4f090",
+        "type": "mongodb out",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "RHMIN",
+        "payonly": true,
+        "upsert": true,
+        "multi": true,
+        "operation": "update",
+        "x": 1510,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9e24fc52ab4c3959",
+        "type": "debug",
+        "z": "adf2d2d757d07856",
+        "name": "debug Predictions",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1270,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "4fad65cc5a7c4655",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Convert Array to individual objects",
+        "func": "msg.payload.forEach(function (/** @type {any} */ obj) {\n    node.send({\n        payload: obj.value,\n        date: obj.date,\n    });\n});",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 120,
+        "wires": [
+            [
+                "7279bd6905676202",
+                "9e24fc52ab4c3959"
+            ]
+        ]
+    },
+    {
+        "id": "453b7e8d72c98620",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Convert Array to individual objects",
+        "func": "msg.payload.forEach(function (/** @type {any} */ obj) {\n    node.send({\n        payload: obj.value,\n        _id: obj._id,\n        date: obj.date\n    });\n});",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 200,
+        "wires": [
+            [
+                "9e24fc52ab4c3959",
+                "a79c0157f16b9187"
+            ]
+        ]
+    },
+    {
+        "id": "7279bd6905676202",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Update RHMIN",
+        "func": "var collectionName = \"RHMIN\";\nvar update = {\n    'collection': collectionName, 'operation': 'update', query: { date: msg.date }, 'payload': {$set: {value:msg.payload,date:msg.date}}  };\nreturn update\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 120,
+        "wires": [
+            [
+                "366e83f060a4f090",
+                "fe36272bab0704b3"
+            ]
+        ]
+    },
+    {
+        "id": "a79c0157f16b9187",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "Update RHMAX",
+        "func": "var collectionName = \"RHMAX\";\nvar update = {\n    'collection': collectionName, 'operation': 'update', query: { date: msg.date }, 'payload': {$set: {value:msg.payload,date:msg.date}}  };\nreturn update\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 200,
+        "wires": [
+            [
+                "5856c80dec9b4fca"
+            ]
+        ]
+    },
+    {
+        "id": "e92cc05d548cc490",
+        "type": "e-mail",
+        "z": "adf2d2d757d07856",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "secure": true,
+        "tls": true,
+        "name": "anupasenevirathne@gmail.com",
+        "dname": "Email output",
+        "x": 1090,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "6425f3eb1595774a",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "e-mail flag function",
+        "func": "var alarm_flag=context.get(\"alarm_flag\")\nif(typeof alarm_flag==\"undefined\")\nalarm_flag=false\n\nif (msg.heatIndex>80 && !alarm_flag){\n    alarm_flag=true\n    msg.topic = \"Heat Index Alert!!!\"\n    msg.payload=\"Danger detected!! the heat index is now at \" + msg.heatIndex +\" F\"\n    context.set(\"alarm_flag\",alarm_flag)\n    return msg\n}\nif (msg.heatIndex <= 80 && alarm_flag){\n    alarm_flag=false\n    context.set(\"alarm_flag\",alarm_flag)\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 500,
+        "wires": [
+            [
+                "e92cc05d548cc490"
+            ]
+        ]
+    },
+    {
+        "id": "fe36272bab0704b3",
+        "type": "debug",
+        "z": "adf2d2d757d07856",
+        "name": "debug Predictions",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1490,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "a4188b0a2b23208d",
+        "type": "http in",
+        "z": "adf2d2d757d07856",
+        "name": "Login Screen",
+        "url": "/LoginForm",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 780,
+        "wires": [
+            [
+                "ecd0f6417d7c6cf0"
+            ]
+        ]
+    },
+    {
+        "id": "2ec47635afa46ec0",
+        "type": "template",
+        "z": "adf2d2d757d07856",
+        "name": "HTML (Login)",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<head>\n  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n  <style>\n    .divider:after,\n.divider:before {\ncontent: \"\";\nflex: 1;\nheight: 1px;\nbackground: #eee;\n}\n.h-custom {\nheight: calc(100% - 73px);\n}\n@media (max-width: 450px) {\n.h-custom {\nheight: 100%;\n}\n}\n  </style>\n</head>\n<body>\n<section class=\"vh-100\">\n  <div class=\"container-fluid h-custom\">\n    <div class=\"row d-flex justify-content-center align-items-center h-100\">\n      <div class=\"col-md-9 col-lg-6 col-xl-5\">\n        <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n      </div>\n      <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n        <form method=\"post\" action={{url}}>\n\n          <!-- Email input -->\n          <div class=\"form-outline mb-4\">\n            <input type=\"text\" id=\"form3Example3\" name=\"un\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid email address\" />\n            <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n          </div>\n\n          <!-- Password input -->\n          <div class=\"form-outline mb-3\">\n            <input type=\"password\" id=\"form3Example4\" name=\"pw\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n            <label class=\"form-label\" for=\"form3Example4\">Password</label>\n          </div>\n\n          <div class=\"text-center text-lg-start mt-4 pt-2\">\n            <input type=\"submit\" class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\"/>\n          </div>\n\n        </form>\n      </div>\n    </div>\n  </div>\n  <div\n    class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n    <!-- Copyright -->\n    <div class=\"text-white mb-3 mb-md-0\">\n      Copyright © 2020. All rights reserved.\n    </div>\n    <!-- Copyright -->\n\n    <!-- Right -->\n    <div>\n      <a href=\"#!\" class=\"text-white me-4\">\n        <i class=\"fab fa-facebook-f\"></i>\n      </a>\n      <a href=\"#!\" class=\"text-white me-4\">\n        <i class=\"fab fa-twitter\"></i>\n      </a>\n      <a href=\"#!\" class=\"text-white me-4\">\n        <i class=\"fab fa-google\"></i>\n      </a>\n      <a href=\"#!\" class=\"text-white\">\n        <i class=\"fab fa-linkedin-in\"></i>\n      </a>\n    </div>\n    <!-- Right -->\n  </div>\n</section>\n</body>",
+        "output": "str",
+        "x": 540,
+        "y": 780,
+        "wires": [
+            [
+                "d9c6f36919b32f1b"
+            ]
+        ]
+    },
+    {
+        "id": "62b6cc1b45af9371",
+        "type": "mongodb in",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "UserData",
+        "operation": "count",
+        "x": 580,
+        "y": 860,
+        "wires": [
+            [
+                "bb5e4b98abc0f478"
+            ]
+        ]
+    },
+    {
+        "id": "ecd0f6417d7c6cf0",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 8",
+        "func": "msg.url=\"logindata\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 780,
+        "wires": [
+            [
+                "2ec47635afa46ec0"
+            ]
+        ]
+    },
+    {
+        "id": "d9c6f36919b32f1b",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 710,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "53421d091da117c7",
+        "type": "http in",
+        "z": "adf2d2d757d07856",
+        "name": "Login Post",
+        "url": "/logindata",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 860,
+        "wires": [
+            [
+                "0391055148e5e88a"
+            ]
+        ]
+    },
+    {
+        "id": "0391055148e5e88a",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 9",
+        "func": "var un = msg.payload.un\nvar pw = msg.payload.pw\n\nmsg.payload = { UserName:un,Password:pw};\nmsg.collection=\"UserData\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 860,
+        "wires": [
+            [
+                "62b6cc1b45af9371"
+            ]
+        ]
+    },
+    {
+        "id": "bb5e4b98abc0f478",
+        "type": "switch",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 860,
+        "wires": [
+            [
+                "3e2e00294287a28e"
+            ],
+            [
+                "eeecd03362535f14"
+            ]
+        ]
+    },
+    {
+        "id": "eeecd03362535f14",
+        "type": "template",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n<head>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f2f2f2;\n    }\n    \n    h1 {\n      color: #ff0000;\n      text-align: center;\n      margin-top: 50px;\n    }\n    \n    a {\n      display: block;\n      width: 200px;\n      height: 50px;\n      line-height: 50px;\n      text-align: center;\n      margin: 0 auto;\n      background-color: #007bff;\n      color: #fff;\n      text-decoration: none;\n      border-radius: 5px;\n      margin-top: 50px;\n    }\n    \n    a:hover {\n      background-color: #0056b3;\n    }\n  </style>\n</head>\n<body>\n  <h1>Invalid Login</h1>\n  <a href=\"http://localhost:1880/LoginForm\">Click Here to Redirect to login</a>\n</body>\n</html>\n",
+        "output": "str",
+        "x": 1040,
+        "y": 960,
+        "wires": [
+            [
+                "2b94cc61fec92655"
+            ]
+        ]
+    },
+    {
+        "id": "2b94cc61fec92655",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1290,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "3e2e00294287a28e",
+        "type": "template",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n<head>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f2f2f2;\n    }\n    \n    h1 {\n      color: #ff0000;\n      text-align: center;\n      margin-top: 50px;\n    }\n    \n    a {\n      display: block;\n      width: 200px;\n      height: 50px;\n      line-height: 50px;\n      text-align: center;\n      margin: 0 auto;\n      background-color: #007bff;\n      color: #fff;\n      text-decoration: none;\n      border-radius: 5px;\n      margin-top: 50px;\n    }\n    \n    a:hover {\n      background-color: #0056b3;\n    }\n  </style>\n</head>\n<body>\n  <h1>Invalid Login</h1>\n  <a href=\"http://localhost:1880/ui\">Click Here to Redirect to login</a>\n</body>\n</html>\n",
+        "output": "str",
+        "x": 1040,
+        "y": 800,
+        "wires": [
+            [
+                "fd085d9a664779b1"
+            ]
+        ]
+    },
+    {
+        "id": "fd085d9a664779b1",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1290,
+        "y": 800,
+        "wires": []
+    }
+]
