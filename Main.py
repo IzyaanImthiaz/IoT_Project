@@ -60,11 +60,12 @@ while True:
             date_object = datetime.date.today()
             enddate_object = date_object.replace(year=date_object.year + prediction_year_range)
             startdate_object = date_object.replace(year=date_object.year - prediction_year_range)
+            dys = (enddate_object - startdate_object).days
             
             startdate_string = startdate_object.strftime('%Y-%m-%d')
             enddate_string = enddate_object.strftime('%Y-%m-%d')
 
-            avg_rh = forecst(model_loc, 'avg_rh', humidity, startdate_string, enddate_object)
+            avg_rh = forecst(model_loc, 'average_relhum', humidity, startdate_string, enddate_object, dys)
             SendData("forecast/avg_rh", str(avg_rh))
           
             sense_interval = 30
