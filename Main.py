@@ -45,8 +45,14 @@ while True:
             hi = heat_index(temperatureF, humidity)
             
             angle = map_val(hi, hi_lowlimit, hi_highlimit, servo_minangle, servo_maxangle)
-            SetAngle(50, angle)
-        
+            
+            if (angle >= 50):
+                SetAngle(60, angle)
+            elif (angle >= 25):
+                SetAngle(55, angle)
+            else:
+                SetAngle(53, angle)
+            
             SendData("sensedata/t", temperature)
             SendData("sensedata/rh", humidity)
             SendData("sensedata/hi", hi)
@@ -54,14 +60,15 @@ while True:
             date_object = datetime.date.today()
             enddate_object = date_object.replace(year=date_object.year + prediction_year_range)
             startdate_object = date_object.replace(year=date_object.year - prediction_year_range)
+            dys = (enddate_object - startdate_object).days
             
             startdate_string = startdate_object.strftime('%Y-%m-%d')
             enddate_string = enddate_object.strftime('%Y-%m-%d')
 
-            avg_rh = forecst(model_loc, 'avg_rh', humidity, startdate_string, enddate_object)
+            avg_rh = forecst(model_loc, 'average_relhum', humidity, startdate_string, enddate_object, dys)
             SendData("forecast/avg_rh", str(avg_rh))
           
-            sense_interval = 60
+            sense_interval = 30
             systim = time()
         else:
             hi = 0
