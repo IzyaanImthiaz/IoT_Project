@@ -20,8 +20,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 780,
-        "y": 260,
+        "x": 1100,
+        "y": 440,
         "wires": []
     },
     {
@@ -35,13 +35,10 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
-        "y": 260,
+        "x": 840,
+        "y": 80,
         "wires": [
-            [
-                "fba3498020037a03",
-                "e7ea0a1655a38c54"
-            ]
+            []
         ]
     },
     {
@@ -55,8 +52,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 470,
-        "y": 320,
+        "x": 710,
+        "y": 400,
         "wires": [
             [
                 "51a761c07aba97ea"
@@ -73,14 +70,14 @@
                 "t": "set",
                 "p": "topic",
                 "pt": "msg",
-                "to": "payload.month",
+                "to": "payload.date",
                 "tot": "msg"
             },
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "payload.rh",
+                "to": "payload.value",
                 "tot": "msg"
             }
         ],
@@ -89,8 +86,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 640,
-        "y": 320,
+        "x": 900,
+        "y": 400,
         "wires": [
             [
                 "468d2e434654a75e",
@@ -118,13 +115,10 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 110,
-        "y": 420,
+        "x": 810,
+        "y": 120,
         "wires": [
-            [
-                "338e97f11f51093e",
-                "7e4bed8c4b63319d"
-            ]
+            []
         ]
     },
     {
@@ -140,8 +134,8 @@
         "format": "",
         "layout": "row-spread",
         "className": "",
-        "x": 840,
-        "y": 420,
+        "x": 1300,
+        "y": 380,
         "wires": []
     },
     {
@@ -157,8 +151,8 @@
         "format": "",
         "layout": "row-spread",
         "className": "",
-        "x": 850,
-        "y": 460,
+        "x": 1310,
+        "y": 420,
         "wires": []
     },
     {
@@ -174,8 +168,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 780,
-        "y": 560,
+        "x": 1120,
+        "y": 700,
         "wires": []
     },
     {
@@ -189,12 +183,10 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 370,
-        "y": 560,
+        "x": 830,
+        "y": 40,
         "wires": [
-            [
-                "ce2ede15c9e7f2d3"
-            ]
+            []
         ]
     },
     {
@@ -208,8 +200,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 470,
-        "y": 620,
+        "x": 710,
+        "y": 520,
         "wires": [
             [
                 "b8b0ee1cd9285e53"
@@ -226,14 +218,14 @@
                 "t": "set",
                 "p": "topic",
                 "pt": "msg",
-                "to": "payload.month",
+                "to": "payload.date",
                 "tot": "msg"
             },
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "payload.rh",
+                "to": "payload.value",
                 "tot": "msg"
             }
         ],
@@ -242,8 +234,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 640,
-        "y": 620,
+        "x": 900,
+        "y": 520,
         "wires": [
             [
                 "28dbe8c482b766b7",
@@ -264,8 +256,8 @@
         "format": "",
         "layout": "row-spread",
         "className": "",
-        "x": 880,
-        "y": 720,
+        "x": 1120,
+        "y": 580,
         "wires": []
     },
     {
@@ -281,8 +273,8 @@
         "format": "",
         "layout": "row-spread",
         "className": "",
-        "x": 890,
-        "y": 760,
+        "x": 1130,
+        "y": 620,
         "wires": []
     },
     {
@@ -323,8 +315,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 980,
-        "y": 660,
+        "x": 1220,
+        "y": 520,
         "wires": [
             []
         ]
@@ -367,8 +359,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 730,
-        "y": 380,
+        "x": 1190,
+        "y": 340,
         "wires": [
             []
         ]
@@ -382,17 +374,19 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 860,
+        "x": 500,
+        "y": 840,
         "wires": []
     },
     {
         "id": "fc0452e2a507b920",
         "type": "inject",
         "z": "9a207c69eabd3b3d",
+        "d": true,
         "name": "",
         "props": [
             {
@@ -403,14 +397,14 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "10",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 120,
+        "x": 90,
         "y": 900,
         "wires": [
             [
@@ -431,8 +425,8 @@
         "format": "<font size =6>{{msg.payload}}%",
         "layout": "row-right",
         "className": "",
-        "x": 840,
-        "y": 940,
+        "x": 820,
+        "y": 920,
         "wires": []
     },
     {
@@ -459,25 +453,8 @@
         "seg2": "",
         "diff": false,
         "className": "",
-        "x": 750,
-        "y": 1020,
-        "wires": []
-    },
-    {
-        "id": "e7ea0a1655a38c54",
-        "type": "debug",
-        "z": "9a207c69eabd3b3d",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 200,
+        "x": 730,
+        "y": 1000,
         "wires": []
     },
     {
@@ -493,8 +470,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
-        "y": 1220,
+        "x": 1440,
+        "y": 840,
         "wires": []
     },
     {
@@ -518,8 +495,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 120,
-        "y": 1220,
+        "x": 1020,
+        "y": 840,
         "wires": [
             [
                 "7efc1e77ca521624"
@@ -534,8 +511,8 @@
         "name": "Mongo Heat_Index",
         "collection": "Heat_Index",
         "operation": "find",
-        "x": 330,
-        "y": 1220,
+        "x": 1230,
+        "y": 840,
         "wires": [
             [
                 "4f8cca5e0db84485",
@@ -567,8 +544,8 @@
         "seg2": "105",
         "diff": false,
         "className": "",
-        "x": 630,
-        "y": 1340,
+        "x": 1530,
+        "y": 960,
         "wires": []
     },
     {
@@ -582,8 +559,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 460,
-        "y": 1380,
+        "x": 1360,
+        "y": 1000,
         "wires": [
             [
                 "2f1aef2f4b6a914d",
@@ -605,8 +582,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 1420,
+        "x": 1520,
+        "y": 1040,
         "wires": []
     },
     {
@@ -617,8 +594,8 @@
         "name": "",
         "collection": "Relative_Humidity",
         "operation": "find",
-        "x": 320,
-        "y": 920,
+        "x": 300,
+        "y": 900,
         "wires": [
             [
                 "4f2336484187190b",
@@ -637,8 +614,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 520,
-        "y": 980,
+        "x": 500,
+        "y": 960,
         "wires": [
             [
                 "8247d8217112994d",
@@ -660,8 +637,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 1060,
+        "x": 700,
+        "y": 1040,
         "wires": []
     },
     {
@@ -677,9 +654,147 @@
         "format": "<font size =6>{{msg.payload}} °F",
         "layout": "row-right",
         "className": "",
-        "x": 700,
-        "y": 1280,
+        "x": 1600,
+        "y": 900,
         "wires": []
+    },
+    {
+        "id": "f672859bc2d9ec4c",
+        "type": "mongodb-aleph-in",
+        "z": "9a207c69eabd3b3d",
+        "mongodb": "65c9fb278b966524",
+        "name": "MongoDB_Predictions_RH_Min",
+        "collection": "RHavg",
+        "operation": "find",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "84b2058a083bab6f",
+                "a8526f38a7a5f5f3",
+                "68acf18472075172"
+            ]
+        ]
+    },
+    {
+        "id": "84b2058a083bab6f",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a2dfb9cd02bb907d",
+        "type": "inject",
+        "z": "9a207c69eabd3b3d",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "f672859bc2d9ec4c"
+            ]
+        ]
+    },
+    {
+        "id": "a8526f38a7a5f5f3",
+        "type": "function",
+        "z": "9a207c69eabd3b3d",
+        "name": "Format Past Data",
+        "func": "let arr = msg.payload\n\n// Get the current date as a Date object:\nconst currentDate = new Date();\n\n// Use Array.filter() to split the array into two based on the `date` property:\nconst pastEvents = arr.filter(event => new Date(event.date) < currentDate);\nconst futureEvents = arr.filter(event => new Date(event.date) >= currentDate);\n\nfunction reduceToMonthlyAverage(arr) {\n    const result = {};\n    arr.forEach(({ date, value }) => {\n        const month = date.substr(0, 7);\n        if (!result[month]) {\n            result[month] = { date: month, value: 0, count: 0 };\n        }\n        result[month].value += value;\n        result[month].count++;\n    });\n    return Object.values(result).map(({ date, value, count }) => ({\n        date,\n        value: value / count,\n    }));\n}\n\nlet formattedPastEvents = reduceToMonthlyAverage(pastEvents);\n\nmsg.payload = formattedPastEvents\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 400,
+        "wires": [
+            [
+                "786d0374652d30e5",
+                "fba3498020037a03"
+            ]
+        ]
+    },
+    {
+        "id": "786d0374652d30e5",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ad62d4844462f1c3",
+        "type": "debug",
+        "z": "9a207c69eabd3b3d",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "68acf18472075172",
+        "type": "function",
+        "z": "9a207c69eabd3b3d",
+        "name": "Format Future Data",
+        "func": "let arr = msg.payload\n\n// Get the current date as a Date object:\nconst currentDate = new Date();\n\n// Use Array.filter() to split the array into two based on the `date` property:\nconst pastEvents = arr.filter(event => new Date(event.date) < currentDate);\nconst futureEvents = arr.filter(event => new Date(event.date) >= currentDate);\n\nfunction reduceToMonthlyAverage(arr) {\n    const result = {};\n    arr.forEach(({ date, value }) => {\n        const month = date.substr(0, 7);\n        if (!result[month]) {\n            result[month] = { date: month, value: 0, count: 0 };\n        }\n        result[month].value += value;\n        result[month].count++;\n    });\n    return Object.values(result).map(({ date, value, count }) => ({\n        date,\n        value: value / count,\n    }));\n}\n\nlet formattedFutureEvents = reduceToMonthlyAverage(futureEvents);\n\nmsg.payload = formattedFutureEvents;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 520,
+        "wires": [
+            [
+                "ce2ede15c9e7f2d3",
+                "ad62d4844462f1c3"
+            ]
+        ]
     },
     {
         "id": "f6e1a6ab6c795c81",
