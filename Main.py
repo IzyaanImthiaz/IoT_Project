@@ -45,8 +45,14 @@ while True:
             hi = heat_index(temperatureF, humidity)
             
             angle = map_val(hi, hi_lowlimit, hi_highlimit, servo_minangle, servo_maxangle)
-            SetAngle(50, angle)
-        
+            
+            if (angle >= 50):
+                SetAngle(60, angle)
+            elif (angle >= 25):
+                SetAngle(55, angle)
+            else:
+                SetAngle(53, angle)
+            
             SendData("sensedata/t", temperature)
             SendData("sensedata/rh", humidity)
             SendData("sensedata/hi", hi)
