@@ -15,6 +15,7 @@ def servopininit():
 
 def SetAngle(speed,angle):
     print ("Servo Positioning Starting...")
+    angle = servo_maxangle - angle
     pwm=GPIO.PWM(servo, speed)
     pwm.start(0)
     duty = angle / 18 + 2

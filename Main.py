@@ -43,9 +43,9 @@ while True:
         if humidity is not None or temperature is not None:
             temperatureF = (temperature*9/5) + 32
             hi = heat_index(temperatureF, humidity)
-        
+            
             angle = map_val(hi, hi_lowlimit, hi_highlimit, servo_minangle, servo_maxangle)
-            SetAngle(60, angle)
+            SetAngle(50, angle)
         
             SendData("sensedata/t", temperature)
             SendData("sensedata/rh", humidity)
@@ -58,12 +58,10 @@ while True:
             startdate_string = startdate_object.strftime('%Y-%m-%d')
             enddate_string = enddate_object.strftime('%Y-%m-%d')
 
-            rh_min = forecst('RHMIN', humidity, startdate_string, enddate_object)
-            SendData("forecast/RHMIN", str(rh_min))
-            rh_max = forecst('RHMAX', humidity, startdate_string, enddate_object)
-            SendData("forecast/RHMAX", str(rh_max))
-        
-            sense_interval = 10
+            avg_rh = forecst(model_loc, 'avg_rh', humidity, startdate_string, enddate_object)
+            SendData("forecast/avg_rh", str(avg_rh))
+          
+            sense_interval = 60
             systim = time()
         else:
             hi = 0
@@ -74,19 +72,23 @@ while True:
 
     if (hi >= 80 and hi < 90):
         buzz = True
-        buzz_interval = 5
+        buzz_interval = 10
         level = 1
     elif (hi >= 90 and hi < 103):
         buzz = True
-        buzz_interval = 3
+        buzz_interval = 5
         level = 2
+    elif (hi >= 103 and hi < 124):
+        buzz = True
+        buzz_interval = 3
+        level = 3
     elif (hi >= 125):
         buzz = True
         buzz_interval = 1
-        level = 3
+        level = 4
     else:
         print("Buzzing Stopped...")
-        buzz = True
+        buzz = False
         level = 0
 
     if (buzz and (time() - systim2 >= buzz_interval)):
