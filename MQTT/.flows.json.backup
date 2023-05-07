@@ -171,8 +171,17 @@
     {
         "id": "872b2bf38620df2f",
         "type": "ui_tab",
-        "name": "new",
+        "name": "Home",
         "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "fd3432368c62b02b",
+        "type": "ui_tab",
+        "name": "Login",
+        "icon": "dashboard",
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
@@ -399,7 +408,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
+        "x": 150,
         "y": 420,
         "wires": [
             [
@@ -421,7 +430,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 200,
+        "x": 180,
         "y": 560,
         "wires": [
             [
@@ -458,7 +467,7 @@
         "upsert": false,
         "multi": false,
         "operation": "store",
-        "x": 840,
+        "x": 900,
         "y": 280,
         "wires": []
     },
@@ -473,7 +482,7 @@
         "upsert": false,
         "multi": false,
         "operation": "store",
-        "x": 860,
+        "x": 920,
         "y": 420,
         "wires": []
     },
@@ -488,7 +497,7 @@
         "upsert": false,
         "multi": false,
         "operation": "store",
-        "x": 840,
+        "x": 900,
         "y": 560,
         "wires": []
     },
@@ -546,7 +555,8 @@
         "wires": [
             [
                 "0b683324c5480f4e",
-                "dd44bf9833cabab7"
+                "6425f3eb1595774a",
+                "f2297da5e119da97"
             ]
         ]
     },
@@ -574,121 +584,8 @@
         "seg2": "120",
         "diff": false,
         "className": "",
-        "x": 770,
+        "x": 830,
         "y": 640,
-        "wires": []
-    },
-    {
-        "id": "dd44bf9833cabab7",
-        "type": "function",
-        "z": "adf2d2d757d07856",
-        "name": "function 5",
-        "func": "\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 480,
-        "y": 640,
-        "wires": [
-            [
-                "f2297da5e119da97"
-            ]
-        ]
-    },
-    {
-        "id": "187a08d0cf89e43d",
-        "type": "http in",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "url": "/Login",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 140,
-        "y": 720,
-        "wires": [
-            [
-                "3b53214e03ddf525"
-            ]
-        ]
-    },
-    {
-        "id": "3b53214e03ddf525",
-        "type": "template",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "<html>\n<head>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n        integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n</head>\n<body>\n<section class=\"vh-100\">\n    <div class=\"container-fluid h-custom\">\n        <div class=\"row d-flex justify-content-center align-items-center h-100\">\n            <div class=\"col-md-9 col-lg-6 col-xl-5\">\n                <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n            </div>\n            <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n                <form onsubmit=\"http://127.0.0.1:1880/Home\">\n\n                    <!-- Email input -->\n                    <div class=\"form-outline mb-4\">\n                        <input type=\"text\" id=\"form3Example3\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid user name\" />\n                        <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n                    </div>\n\n                    <!-- Password input -->\n                    <div class=\"form-outline mb-3\">\n                        <input type=\"password\" id=\"form3Example4\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n                        <label class=\"form-label\" for=\"form3Example4\">Password</label>\n                    </div>\n\n                    <div class=\"d-flex justify-content-between align-items-center\">\n                        <!-- Checkbox -->\n                        <div class=\"form-check mb-0\">\n                            <input class=\"form-check-input me-2\" type=\"checkbox\" value=\"\" id=\"form2Example3\" />\n                            <label class=\"form-check-label\" for=\"form2Example3\">\n                Remember me\n              </label>\n                        </div>\n                        <a href=\"#!\" class=\"text-body\">Forgot password?</a>\n                    </div>\n\n                    <div class=\"text-center text-lg-start mt-4 pt-2\">\n                        <input type=\"submit\"  class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\"/>\n                        \n                    </div>\n\n                </form>\n            </div>\n        </div>\n    </div>\n    <div\n        class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n        <!-- Copyright -->\n        <div class=\"text-white mb-3 mb-md-0\">\n            Copyright © 2020. All rights reserved.\n        </div>\n        <!-- Copyright -->\n\n        <!-- Right -->\n        <div>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-facebook-f\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-twitter\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-google\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white\">\n                <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n\n            \n        </div>\n        <!-- Right -->\n    </div>\n</section>\n</body>\n</html>",
-        "output": "str",
-        "x": 480,
-        "y": 720,
-        "wires": [
-            [
-                "7a6dc22f0162a6d9"
-            ]
-        ]
-    },
-    {
-        "id": "7a6dc22f0162a6d9",
-        "type": "http response",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 770,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "eb304b892640f72b",
-        "type": "template",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "<html>\n<head>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n        integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n</head>\n<body>\n<section class=\"vh-100\">\n    <div class=\"container-fluid h-custom\">\n        <div class=\"row d-flex justify-content-center align-items-center h-100\">\n            <div class=\"col-md-9 col-lg-6 col-xl-5\">\n                <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n            </div>\n            <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n                <form>\n\n                    <!-- Email input -->\n                    <div class=\"form-outline mb-4\">\n                        <input type=\"text\" id=\"form3Example3\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid user name\" />\n                        <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n                    </div>\n\n                    <!-- Password input -->\n                    <div class=\"form-outline mb-3\">\n                        <input type=\"password\" id=\"form3Example4\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n                        <label class=\"form-label\" for=\"form3Example4\">Password</label>\n                    </div>\n\n                    <div class=\"d-flex justify-content-between align-items-center\">\n                        <!-- Checkbox -->\n                        <div class=\"form-check mb-0\">\n                            <input class=\"form-check-input me-2\" type=\"checkbox\" value=\"\" id=\"form2Example3\" />\n                            <label class=\"form-check-label\" for=\"form2Example3\">\n                Remember me\n              </label>\n                        </div>\n                        <a href=\"#!\" class=\"text-body\">Forgot password?</a>\n                    </div>\n\n                    <div class=\"text-center text-lg-start mt-4 pt-2\">\n                        <button type=\"button\" class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\">Login</button>\n                        \n                    </div>\n\n                </form>\n            </div>\n        </div>\n    </div>\n    <div\n        class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n        <!-- Copyright -->\n        <div class=\"text-white mb-3 mb-md-0\">\n            Copyright © 2020. All rights reserved.\n        </div>\n        <!-- Copyright -->\n\n        <!-- Right -->\n        <div>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-facebook-f\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-twitter\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white me-4\">\n                <i class=\"fab fa-google\"></i>\n            </a>\n            <a href=\"#!\" class=\"text-white\">\n                <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n\n            <a href=\"http://127.0.0.1:1880/ui\" class=\"text-white\">\n               ssssssssssssssssssssssssssssss <i class=\"fab fa-linkedin-in\"></i>\n            </a>\n        </div>\n        <!-- Right -->\n    </div>\n</section>\n</body>\n</html>",
-        "output": "str",
-        "x": 480,
-        "y": 800,
-        "wires": [
-            [
-                "851e4cdd6e09c1f5"
-            ]
-        ]
-    },
-    {
-        "id": "a65d32685fe74384",
-        "type": "http in",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "url": "/Home",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 150,
-        "y": 800,
-        "wires": [
-            [
-                "eb304b892640f72b"
-            ]
-        ]
-    },
-    {
-        "id": "851e4cdd6e09c1f5",
-        "type": "http response",
-        "z": "adf2d2d757d07856",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 770,
-        "y": 800,
         "wires": []
     },
     {
@@ -743,7 +640,7 @@
         "upsert": true,
         "multi": true,
         "operation": "update",
-        "x": 1410,
+        "x": 1510,
         "y": 200,
         "wires": []
     },
@@ -799,7 +696,7 @@
         "upsert": true,
         "multi": true,
         "operation": "update",
-        "x": 1410,
+        "x": 1510,
         "y": 120,
         "wires": []
     },
@@ -816,7 +713,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1190,
+        "x": 1270,
         "y": 20,
         "wires": []
     },
@@ -835,7 +732,8 @@
         "y": 120,
         "wires": [
             [
-                "7279bd6905676202"
+                "7279bd6905676202",
+                "9e24fc52ab4c3959"
             ]
         ]
     },
@@ -863,18 +761,19 @@
         "id": "7279bd6905676202",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "function 6",
+        "name": "Update RHMIN",
         "func": "var collectionName = \"RHMIN\";\nvar update = {\n    'collection': collectionName, 'operation': 'update', query: { date: msg.date }, 'payload': {$set: {value:msg.payload,date:msg.date}}  };\nreturn update\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
+        "x": 1260,
         "y": 120,
         "wires": [
             [
-                "366e83f060a4f090"
+                "366e83f060a4f090",
+                "fe36272bab0704b3"
             ]
         ]
     },
@@ -882,19 +781,283 @@
         "id": "a79c0157f16b9187",
         "type": "function",
         "z": "adf2d2d757d07856",
-        "name": "function 7",
+        "name": "Update RHMAX",
         "func": "var collectionName = \"RHMAX\";\nvar update = {\n    'collection': collectionName, 'operation': 'update', query: { date: msg.date }, 'payload': {$set: {value:msg.payload,date:msg.date}}  };\nreturn update\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
+        "x": 1260,
         "y": 200,
         "wires": [
             [
                 "5856c80dec9b4fca"
             ]
         ]
+    },
+    {
+        "id": "e92cc05d548cc490",
+        "type": "e-mail",
+        "z": "adf2d2d757d07856",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "secure": true,
+        "tls": true,
+        "name": "anupasenevirathne@gmail.com",
+        "dname": "Email output",
+        "x": 1090,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "6425f3eb1595774a",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 6",
+        "func": "var alarm_flag=context.get(\"alarm_flag\")\nif(typeof alarm_flag==\"undefined\")\nalarm_flag=false\n\nif (msg.heatIndex>80 && !alarm_flag){\n    alarm_flag=true\n    msg.topic = \"Heat Index Alert!!!\"\n    msg.payload=\"Danger detected!! the heat index is now at \" + msg.heatIndex +\" F\"\n    context.set(\"alarm_flag\",alarm_flag)\n    return msg\n}\nif (msg.heatIndex <= 80 && alarm_flag){\n    alarm_flag=false\n    context.set(\"alarm_flag\",alarm_flag)\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 500,
+        "wires": [
+            [
+                "e92cc05d548cc490"
+            ]
+        ]
+    },
+    {
+        "id": "fe36272bab0704b3",
+        "type": "debug",
+        "z": "adf2d2d757d07856",
+        "name": "debug Predictions",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1490,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "a4188b0a2b23208d",
+        "type": "http in",
+        "z": "adf2d2d757d07856",
+        "name": "Login Screen",
+        "url": "/LoginForm",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 780,
+        "wires": [
+            [
+                "ecd0f6417d7c6cf0"
+            ]
+        ]
+    },
+    {
+        "id": "2ec47635afa46ec0",
+        "type": "template",
+        "z": "adf2d2d757d07856",
+        "name": "HTML (Login)",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<head>\n  <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n  <style>\n    .divider:after,\n.divider:before {\ncontent: \"\";\nflex: 1;\nheight: 1px;\nbackground: #eee;\n}\n.h-custom {\nheight: calc(100% - 73px);\n}\n@media (max-width: 450px) {\n.h-custom {\nheight: 100%;\n}\n}\n  </style>\n</head>\n<body>\n<section class=\"vh-100\">\n  <div class=\"container-fluid h-custom\">\n    <div class=\"row d-flex justify-content-center align-items-center h-100\">\n      <div class=\"col-md-9 col-lg-6 col-xl-5\">\n        <img src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp\"\n          class=\"img-fluid\" alt=\"Sample image\">\n      </div>\n      <div class=\"col-md-8 col-lg-6 col-xl-4 offset-xl-1\">\n        <form method=\"post\" action={{url}}>\n\n          <!-- Email input -->\n          <div class=\"form-outline mb-4\">\n            <input type=\"text\" id=\"form3Example3\" name=\"un\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter a valid email address\" />\n            <label class=\"form-label\" for=\"form3Example3\">User Name</label>\n          </div>\n\n          <!-- Password input -->\n          <div class=\"form-outline mb-3\">\n            <input type=\"password\" id=\"form3Example4\" name=\"pw\" class=\"form-control form-control-lg\"\n              placeholder=\"Enter password\" />\n            <label class=\"form-label\" for=\"form3Example4\">Password</label>\n          </div>\n\n          <div class=\"text-center text-lg-start mt-4 pt-2\">\n            <input type=\"submit\" class=\"btn btn-primary btn-lg\"\n              style=\"padding-left: 2.5rem; padding-right: 2.5rem;\"/>\n          </div>\n\n        </form>\n      </div>\n    </div>\n  </div>\n  <div\n    class=\"d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary\">\n    <!-- Copyright -->\n    <div class=\"text-white mb-3 mb-md-0\">\n      Copyright © 2020. All rights reserved.\n    </div>\n    <!-- Copyright -->\n\n    <!-- Right -->\n    <div>\n      <a href=\"#!\" class=\"text-white me-4\">\n        <i class=\"fab fa-facebook-f\"></i>\n      </a>\n      <a href=\"#!\" class=\"text-white me-4\">\n        <i class=\"fab fa-twitter\"></i>\n      </a>\n      <a href=\"#!\" class=\"text-white me-4\">\n        <i class=\"fab fa-google\"></i>\n      </a>\n      <a href=\"#!\" class=\"text-white\">\n        <i class=\"fab fa-linkedin-in\"></i>\n      </a>\n    </div>\n    <!-- Right -->\n  </div>\n</section>\n</body>",
+        "output": "str",
+        "x": 540,
+        "y": 780,
+        "wires": [
+            [
+                "d9c6f36919b32f1b"
+            ]
+        ]
+    },
+    {
+        "id": "62b6cc1b45af9371",
+        "type": "mongodb in",
+        "z": "adf2d2d757d07856",
+        "mongodb": "0c3ed7beda01e705",
+        "name": "",
+        "collection": "UserData",
+        "operation": "count",
+        "x": 580,
+        "y": 860,
+        "wires": [
+            [
+                "bb5e4b98abc0f478"
+            ]
+        ]
+    },
+    {
+        "id": "ecd0f6417d7c6cf0",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 8",
+        "func": "msg.url=\"logindata\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 780,
+        "wires": [
+            [
+                "2ec47635afa46ec0"
+            ]
+        ]
+    },
+    {
+        "id": "d9c6f36919b32f1b",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 710,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "53421d091da117c7",
+        "type": "http in",
+        "z": "adf2d2d757d07856",
+        "name": "Login Post",
+        "url": "/logindata",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 860,
+        "wires": [
+            [
+                "0391055148e5e88a"
+            ]
+        ]
+    },
+    {
+        "id": "0391055148e5e88a",
+        "type": "function",
+        "z": "adf2d2d757d07856",
+        "name": "function 9",
+        "func": "var un = msg.payload.un\nvar pw = msg.payload.pw\n\nmsg.payload = { UserName:un,Password:pw};\nmsg.collection=\"UserData\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 860,
+        "wires": [
+            [
+                "62b6cc1b45af9371"
+            ]
+        ]
+    },
+    {
+        "id": "bb5e4b98abc0f478",
+        "type": "switch",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 860,
+        "wires": [
+            [
+                "3e2e00294287a28e"
+            ],
+            [
+                "eeecd03362535f14"
+            ]
+        ]
+    },
+    {
+        "id": "eeecd03362535f14",
+        "type": "template",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n<head>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f2f2f2;\n    }\n    \n    h1 {\n      color: #ff0000;\n      text-align: center;\n      margin-top: 50px;\n    }\n    \n    a {\n      display: block;\n      width: 200px;\n      height: 50px;\n      line-height: 50px;\n      text-align: center;\n      margin: 0 auto;\n      background-color: #007bff;\n      color: #fff;\n      text-decoration: none;\n      border-radius: 5px;\n      margin-top: 50px;\n    }\n    \n    a:hover {\n      background-color: #0056b3;\n    }\n  </style>\n</head>\n<body>\n  <h1>Invalid Login</h1>\n  <a href=\"http://localhost:1880/LoginForm\">Click Here to Redirect to login</a>\n</body>\n</html>\n",
+        "output": "str",
+        "x": 1040,
+        "y": 960,
+        "wires": [
+            [
+                "2b94cc61fec92655"
+            ]
+        ]
+    },
+    {
+        "id": "2b94cc61fec92655",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1290,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "3e2e00294287a28e",
+        "type": "template",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n<head>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f2f2f2;\n    }\n    \n    h1 {\n      color: #ff0000;\n      text-align: center;\n      margin-top: 50px;\n    }\n    \n    a {\n      display: block;\n      width: 200px;\n      height: 50px;\n      line-height: 50px;\n      text-align: center;\n      margin: 0 auto;\n      background-color: #007bff;\n      color: #fff;\n      text-decoration: none;\n      border-radius: 5px;\n      margin-top: 50px;\n    }\n    \n    a:hover {\n      background-color: #0056b3;\n    }\n  </style>\n</head>\n<body>\n  <h1>Invalid Login</h1>\n  <a href=\"http://localhost:1880/ui\">Click Here to Redirect to login</a>\n</body>\n</html>\n",
+        "output": "str",
+        "x": 1040,
+        "y": 800,
+        "wires": [
+            [
+                "fd085d9a664779b1"
+            ]
+        ]
+    },
+    {
+        "id": "fd085d9a664779b1",
+        "type": "http response",
+        "z": "adf2d2d757d07856",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1290,
+        "y": 800,
+        "wires": []
     }
 ]
