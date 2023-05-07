@@ -43,9 +43,9 @@ while True:
         if humidity is not None or temperature is not None:
             temperatureF = (temperature*9/5) + 32
             hi = heat_index(temperatureF, humidity)
-            hi = 75
+            
             angle = map_val(hi, hi_lowlimit, hi_highlimit, servo_minangle, servo_maxangle)
-            SetAngle(60, angle)
+            SetAngle(50, angle)
         
             SendData("sensedata/t", temperature)
             SendData("sensedata/rh", humidity)
