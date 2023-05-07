@@ -67,7 +67,7 @@ while True:
             avg_rh = forecst(model_loc, 'avg_rh', humidity, startdate_string, enddate_object)
             SendData("forecast/avg_rh", str(avg_rh))
           
-            sense_interval = 60
+            sense_interval = 30
             systim = time()
         else:
             hi = 0
